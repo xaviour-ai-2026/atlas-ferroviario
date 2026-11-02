@@ -1,0 +1,44 @@
+<!doctype html>
+<!-- Rail Safety Spain — one full-screen geographic map of Spain: one search, one bottom sheet (route awareness). -->
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="#0b1524">
+  <title>Rail Safety Spain · mapa de trenes de Renfe con datos abiertos</title>
+  <meta name="description" content="Proyecto comunitario y sin ánimo de lucro: posiciones publicadas y horarios oficiales de trenes de Renfe sobre un mapa de España.">
+  <link rel="stylesheet" href="/vendor/maplibre-gl-6.16.0/maplibre-gl.css">
+  <link rel="stylesheet" href="/styles.css">
+</head>
+<body>
+  <div id="map" class="map" role="region" aria-label="Mapa de España con estaciones y trenes de Renfe"></div>
+
+  <!-- Floating search -->
+  <div class="search-panel">
+    <p class="brand"><span class="brand-mark" aria-hidden="true"></span>Rail Safety Spain</p>
+    <div class="search" role="search">
+      <svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><circle cx="11" cy="11" r="6.5"/><path d="m20 20-4.2-4.2"/></svg>
+      <label for="q" class="sr-only">Buscar estación o tren</label>
+      <input id="q" type="search" placeholder="Buscar estación o tren" autocomplete="off" enterkeyhint="search"
+        aria-controls="results" aria-expanded="false">
+      <kbd aria-hidden="true">/</kbd>
+    </div>
+    <ul id="results" class="results" role="listbox" aria-label="Resultados" hidden></ul>
+  </div>
+
+  <!-- Map controls -->
+  <div class="controls">
+    <button id="home" class="control" title="Ver toda España" aria-label="Ver toda España">España</button>
+    <button id="overlay-toggle" class="control" aria-pressed="false" title="Capa detallada de vías de OpenRailwayMap">Vías</button>
+    <button id="info-toggle" class="control" aria-label="Sobre este mapa y sus datos" title="Sobre este mapa">i</button>
+  </div>
+
+  <!-- Status chip: data freshness + coverage -->
+  <p id="status" class="status" role="status" aria-live="polite">Cargando datos oficiales de Renfe…</p>
+
+  <!-- The one bottom sheet: a train's route awareness, a station board, or the information panel -->
+  <aside id="card" class="sheet" aria-label="Detalle" hidden></aside>
+
+  <script type="module" src="/app.js"></script>
+</body>
+</html>
