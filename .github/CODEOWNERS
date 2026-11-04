@@ -1,0 +1,10 @@
+# Every change needs review by the maintainer (enforced by the main-branch ruleset).
+# Sensitive paths listed explicitly so the rule stays visible if the default line changes.
+*                       @christopherhm0029
+/.github/               @christopherhm0029
+/server.mjs             @christopherhm0029
+/lambda.mjs             @christopherhm0029
+/lib/                   @christopherhm0029
+/scripts/               @christopherhm0029
+/package.json           @christopherhm0029
+/public/vendor/         @christopherhm0029
