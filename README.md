@@ -31,7 +31,8 @@ datos y la auditoría ([`docs/AUDIT-v7.md`](docs/AUDIT-v7.md)), y a señalar cua
 ## Puesta en marcha
 
 Requisitos: Node.js ≥ 20. Sin dependencias npm; MapLibre GL JS está incluido en `public/vendor/` (ver abajo).
-El mismo servidor funciona en AWS Lambda mediante `lambda.mjs` (plan de despliegue: [`docs/DEPLOY.md`](docs/DEPLOY.md)).
+El mismo servidor puede ejecutarse en AWS Lambda mediante `lambda.mjs` (variables `CACHE_DIR` y `RAIL_FILE`); la
+configuración del despliegue de producción se mantiene en un repositorio privado aparte.
 Seguridad: [`SECURITY.md`](SECURITY.md).
 
 ```bash
