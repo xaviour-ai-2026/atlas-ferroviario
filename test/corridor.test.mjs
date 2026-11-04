@@ -171,3 +171,23 @@ test('nationwide index (corridor null) keeps every trip and never drops position
   const t = s.trains.find((x) => x.number === '04000');
   assert.deepEqual(t.position, { lat: 41.0, lon: -4.2 }, 'reported coordinates are passed through unchanged');
 });
+
+test('train lookup prefers the variant Renfe is publishing (same as the map marker), then the timetable', () => {
+  // Two GTFS variants of one number, both valid today: without live data the timetable order decides; with live
+  // data the published variant wins, so the detail shows the same position, stop and route as the marker.
+  const two = { ...files, trips: files.trips + '\nR1,S1,0210022026-11-01,,02100',
+    stop_times: files.stop_times + '\n0210022026-11-01,10:00:00,10:00:00,60000,01\n0210022026-11-01,12:00:00,12:00:00,50500,02' };
+  const idx = buildIndex(two, null);
+  assert.equal(findTrip(idx, '02100', NOW).tripId, '0210012026-11-01');
+  assert.equal(findTrip(idx, '02100', NOW, ['x', '0210022026-11-01']).tripId, '0210022026-11-01');
+  assert.equal(findTrip(idx, '02100', NOW, ['0210012026-11-01', '0210022026-11-01']).tripId, '0210022026-11-01', 'last published wins, like /api/live');
+  assert.equal(findTrip(idx, '02100', NOW, ['0400012026-11-01']).tripId, '0210012026-11-01', 'other numbers are ignored');
+});
+
+test('a reported stop far from the published coordinates is measured, never corrected', () => {
+  const idx = buildIndex(files);
+  const t = trainDetail(idx, findTrip(idx, '02100', NOW), { positions: positions([vp('0210012026-11-01', 38.0, -4.79, { currentStatus: 'STOPPED_AT' })]), delays });
+  assert.equal(t.reportedStop, 'Córdoba-Julio Anguita');
+  assert.deepEqual(t.position, { lat: 38.0, lon: -4.79 }, 'coordinates kept as published');
+  assert.ok(t.reportedStopKm > 12 && t.reportedStopKm < 13, `km ${t.reportedStopKm}`);
+});

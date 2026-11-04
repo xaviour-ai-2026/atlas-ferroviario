@@ -1,8 +1,8 @@
 {
-  "name": "rail-safety-spain",
+  "name": "atlas-ferroviario",
   "version": "0.1.0",
   "private": true,
-  "description": "Free, non-commercial, open-source observability prototype for Renfe trains on the Madrid–Sevilla corridor, from official open data.",
+  "description": "Atlas Ferroviario: free, non-commercial, open-source railway observability prototype for Renfe trains in Spain, from official open data. Informational only; not a safety system.",
   "license": "MIT",
   "type": "module",
   "engines": { "node": ">=20" },

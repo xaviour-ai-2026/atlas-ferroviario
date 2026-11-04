@@ -1,8 +1,13 @@
-// Rail Safety Spain — the one bottom sheet: a train's route awareness, a station board, or "about this map".
+// Atlas Ferroviario — the one detail panel (right-hand on desktop, bottom sheet on phones): a train's route awareness
+// as three swipeable panes (Viaje · Corredor · Datos), a station board, or "about this map". Also the Atlas-style
+// stop timeline and the two map callouts for a selected train.
 // Every value says where it comes from (Renfe live feed, official timetable, Renfe forecast, OSM estimate). No speed,
 // no ETAs of our own, no distances between trains, no risk language beyond the informational notice.
 
 import { clock, serviceTime, delayText, age, esc, shortName, nowServiceSeconds, icon, STATUS_TEXT } from './format.js';
+import { FEED_STALE_MS } from './observations.js';
+
+const STOP_MISMATCH_KM = 3; // "Detenido en X" with coordinates further than this from X: shown as a disagreement
 
 const RENFE_LINK = `<a class="link" href="https://www.renfe.com/es/es" target="_blank" rel="noopener">Información oficial de Renfe ${icon('external')}</a>`;
 const NOTICE = '<p class="notice">Informativo: no es un sistema de seguridad ni de emergencias (112). Posiciones tal como las publica Renfe.</p>';
@@ -11,7 +16,7 @@ const CLOSE = '<button class="close" data-action="close" aria-label="Cerrar">×<
 
 const fact = (label, value, note) => `<div class="fact"><dt>${label}</dt><dd>${value}</dd>${note ? `<dd class="fact-note">${note}</dd>` : ''}</div>`;
 const trainName = (t) => `${esc(t.product)} ${esc(t.number)}`;
-const trainButton = (t, sub) => `<button class="ctx-row" data-action="train" data-value="${esc(t.number)}">
+const trainButton = (t, sub) => `<button class="ctx-row" data-action="train" data-value="${esc(t.number)}" title="${sub}">
   <span class="ctx-main">${trainName(t)}</span><span class="ctx-sub">${sub}</span></button>`;
 
 const LEG_STATUS = { unmatched: 'estación sin vía cartografiada cerca', 'no-path': 'sin conexión en la red de OSM', implausible: 'trazado no coherente con el horario' };
@@ -38,7 +43,7 @@ function routeSummary(route) {
 }
 
 /** Horizontal progress strip of official stops: passed dimmed, next highlighted, the train where Renfe places it. */
-function strip(t, p) {
+export function stopStrip(t, p = progress(t)) {
   return `<ol class="strip" aria-label="Paradas · horario oficial">${t.stops.map((s, i) => {
     const cls = [p.reached != null && i <= p.reached ? 'passed' : '', p.next?.idx === i ? 'next' : '', i === 0 ? 'first' : ''].join(' ').trim();
     const here = p.reached == null ? '' : p.stoppedAt && i === p.reached ? '<span class="here at" aria-hidden="true"></span>'
@@ -53,80 +58,127 @@ function corridor(ctx) {
   if (!ctx) return '<p class="subtle">Cargando el contexto del corredor…</p>';
   const near = ctx.near;
   const nearHtml = !near.available
-    ? `<p class="ctx-empty">${near.reason === 'route' ? 'Sin recorrido dibujado: no se puede situar a otros trenes en el corredor.' : 'Renfe no responde: sin posiciones publicadas ahora.'}</p>`
+    ? `<p class="ctx-empty">${near.reason === 'route' ? 'Sin recorrido dibujado: no se puede situar a otros trenes en el corredor.'
+      : near.reason === 'stale' ? 'El fichero de posiciones de Renfe tiene más de 2 minutos: no se listan trenes cercanos.'
+      : 'Renfe no responde: sin posiciones publicadas ahora.'}</p>`
     : near.trains.length
-      ? `<div class="ctx-list">${near.trains.slice(0, 6).map((o) => trainButton(o, `→ ${esc(shortName(o.destination))}${o.reportedStatus && o.reportedStop ? ` · ${STATUS_TEXT[o.reportedStatus] ?? 'Cerca de'} ${esc(shortName(o.reportedStop))}` : ''}`)).join('')}</div>
-        ${near.trains.length > 6 ? `<p class="ctx-empty">y ${near.trains.length - 6} más</p>` : ''}`
-      : `<p class="ctx-empty">Ningún otro tren publicado a menos de ${ctx.nearKm} km del resto del recorrido dibujado.</p>`;
+      ? `<div class="ctx-list">${near.trains.slice(0, 4).map((o) => trainButton(o, `→ ${esc(shortName(o.destination))}${o.reportedStatus && o.reportedStop ? ` · ${STATUS_TEXT[o.reportedStatus] ?? 'Cerca de'} ${esc(shortName(o.reportedStop))}` : ''}`)).join('')}</div>
+        ${near.trains.length > 4 ? `<p class="ctx-more">y ${near.trains.length - 4} más cerca del recorrido</p>` : ''}`
+      : `<p class="ctx-empty">Ningún otro tren de Renfe con posición publicada a menos de ${ctx.nearKm} km del resto del recorrido dibujado. No significa que la vía esté libre.</p>`;
   const sharedHtml = ctx.shared.length
     ? ctx.shared.map((s) => `<div class="node"><p class="node-head"><span class="node-name">${esc(shortName(s.name))}</span><span class="node-time">${serviceTime(s.time)}</span></p>
-        ${s.trains.length ? `<div class="chips">${s.trains.slice(0, 8).map((o) => `<button class="chip" data-action="train" data-value="${esc(o.number)}" title="${esc(shortName(o.origin))} → ${esc(shortName(o.destination))} · ${serviceTime(o.time)}">${trainName(o)} <span>${serviceTime(o.time)}</span></button>`).join('')}${s.trains.length > 8 ? `<span class="chip-more">+${s.trains.length - 8}</span>` : ''}</div>`
+        ${s.trains.length ? `<div class="chips">${s.trains.slice(0, 4).map((o) => `<button class="chip" data-action="train" data-value="${esc(o.number)}" title="${esc(shortName(o.origin))} → ${esc(shortName(o.destination))} · ${serviceTime(o.time)}">${trainName(o)} <span>${serviceTime(o.time)}</span></button>`).join('')}${s.trains.length > 4 ? `<span class="chip-more">+${s.trains.length - 4}</span>` : ''}</div>`
           : '<p class="ctx-empty">Sin otros trenes de Renfe programados.</p>'}</div>`).join('')
     : '<p class="ctx-empty">Sin próximas paradas en las 3 horas siguientes del horario.</p>';
   return `<div class="ctx-grid">
-      <div><h4>Cerca del resto del recorrido</h4>${nearHtml}
-        <p class="note">Posición publicada a ≤ ${ctx.nearKm} km de la línea dibujada. No implica la misma vía ni el mismo sentido.</p></div>
-      <div><h4>Próximas paradas compartidas</h4>${sharedHtml}
-        <p class="note">Otros trenes del horario oficial en la misma estación, ±${ctx.windowMin} min. Iryo y Ouigo no publican datos: pueden faltar.</p></div>
+      <div><h4>Cerca del resto del recorrido <span class="h4-note">posición publicada a ≤ ${ctx.nearKm} km</span></h4>${nearHtml}</div>
+      <div><h4>Próximas paradas compartidas <span class="h4-note">horario oficial ±${ctx.windowMin} min</span></h4>${sharedHtml}</div>
+      <p class="note">«Cerca» no implica la misma vía ni el mismo sentido. Iryo, Ouigo, mercancías y los trenes sin posición publicada no aparecen.</p>
     </div>`;
 }
 
-/** Train sheet. `positions` is the live feed metadata (publication time), never a measurement time. */
-export function trainCard(t, positions, route, ctx) {
+/** Where Renfe places the train, as short HTML ("Detenido en Córdoba" + source). */
+function whereText(t) {
+  return t.position && t.reportedStatus && t.reportedStop
+    ? `${STATUS_TEXT[t.reportedStatus] ?? 'Cerca de'} ${esc(shortName(t.reportedStop))}<span class="by">según Renfe</span>`
+    : t.position ? 'Posición publicada en el mapa<span class="by">Renfe</span>' : 'Renfe no publica su posición ahora';
+}
+
+/** Vertical list for the Viaje pane: passed stops folded into one row, the next stop and up to 5 after it. */
+function stopList(t, p) {
+  const start = p.next?.idx ?? (p.reached != null ? p.reached + 1 : 0);
+  const shown = t.stops.slice(start, start + 6);
+  const rest = t.stops.length - start - shown.length;
+  return `<ol class="stop-list">
+    ${start > 0 ? `<li class="sum passed"><span class="n">✓</span><span class="sl-name">${start} ${start === 1 ? 'parada pasada' : 'paradas pasadas'} · desde ${esc(shortName(t.stops[0].name))}</span></li>` : ''}
+    ${shown.map((s, k) => { const i = start + k; return `<li class="${p.next?.idx === i ? 'next' : ''}"><span class="n">${i + 1}</span>
+      <span class="sl-name">${esc(shortName(s.name))}${p.next?.idx === i ? `<span class="tag">Próxima · ${p.next.by}</span>` : ''}</span>
+      <span class="sl-time">${serviceTime(i === 0 ? s.dep : s.arr)}</span></li>`; }).join('')}
+    ${rest > 0 ? `<li class="sum"><span class="n">+</span><span class="sl-name">${rest} más hasta ${esc(shortName(t.stops.at(-1).name))}</span></li>` : ''}
+  </ol>`;
+}
+
+export const TABS = ['Viaje', 'Corredor', 'Datos'];
+
+/**
+ * Train panel. `positions` is the live feed metadata (publication time), never a measurement time.
+ * The three panes sit side by side in a scroll-snap carousel; app.js scrolls it to `tab`.
+ */
+export function trainCard(t, positions, route, ctx, tab = 0) {
   const p = progress(t);
   const next = p.next ? t.stops[p.next.idx] : null;
   const lm = positions?.lastModified;
-  const where = t.position && t.reportedStatus && t.reportedStop
-    ? `${STATUS_TEXT[t.reportedStatus] ?? 'Cerca de'} ${esc(shortName(t.reportedStop))}<span class="by">según Renfe</span>`
-    : t.position ? 'Posición publicada en el mapa<span class="by">Renfe</span>' : 'Renfe no publica su posición ahora';
+  const fresh = positions?.ok && lm && Date.now() - lm <= FEED_STALE_MS;
+  const conflict = t.position && t.reportedStatus === 'STOPPED_AT' && t.reportedStopKm > STOP_MISMATCH_KM;
+  const nearCount = ctx?.near?.available ? ctx.near.trains.length : null;
+  const tabLabel = (name, i) => (i === 1 && nearCount ? `${name} · ${nearCount}` : name);
 
   return `<header class="sheet-head">${GRIP}
       <div class="head-main">
         <p class="eyebrow">${trainName(t)} · Renfe</p>
         <h2 class="title" tabindex="-1">${esc(shortName(t.origin))} <span class="arrow" aria-hidden="true">→</span><span class="sr-only">a</span> ${esc(shortName(t.destination))}</h2>
       </div>
-      <p class="state ${t.position ? 'published' : 'missing'}"><span class="dot" aria-hidden="true"></span>${where}</p>
       ${CLOSE}
     </header>
-    ${strip(t, p)}
-    <p class="strip-note">${p.reached != null ? 'Avance según la estación que publica Renfe, no según la hora.' : 'Sin avance: Renfe no publica en qué parada está.'}</p>
-    <div class="sheet-grid">
-      <dl class="facts">
-        ${fact('Próxima parada', next ? esc(shortName(next.name)) : 'Fin del recorrido', next ? `${p.next.by} · ${serviceTime(next.arr)}` : 'según horario')}
-        ${fact('Retraso', t.cancelled ? 'Cancelado' : t.delaySec != null ? esc(delayText(t.delaySec)) : 'Sin dato', t.cancelled ? 'según Renfe' : t.delaySec != null ? 'previsión de Renfe' : 'Renfe no ha publicado retraso')}
-        ${fact('Publicado', positions?.ok && lm ? `hace ${age(Date.now() - lm)}` : 'No disponible', positions?.ok && lm ? `${clock(lm)} · fichero de Renfe` : 'Renfe no responde')}
-        ${fact('Fuente', t.position ? 'Renfe en vivo' : 'Horario oficial', 'datos abiertos de Renfe')}
-      </dl>
-      <section class="ctx" aria-labelledby="ctx-h">
-        <h3 id="ctx-h">Contexto del corredor <span class="ctx-lead">· solo informativo: no indica riesgo, conflicto ni distancia entre trenes</span></h3>
+    <p class="state ${t.position ? 'published' : 'missing'}"><span class="dot" aria-hidden="true"></span>${whereText(t)}</p>
+    ${conflict ? `<p class="conflict">Las coordenadas publicadas están a ${String(t.reportedStopKm).replace('.', ',')} km de ${esc(shortName(t.reportedStop))}. Renfe publica ambos datos; se muestran tal cual.</p>` : ''}
+    <div class="sheet-strip">${stopStrip(t, p)}</div>
+    <div class="tabs" role="tablist" aria-label="Detalles del tren">${TABS.map((name, i) => `<button role="tab" id="tab-${i}" aria-controls="pane-${i}"
+      aria-selected="${i === tab}" tabindex="${i === tab ? 0 : -1}" data-action="tab" data-value="${i}">${tabLabel(name, i)}</button>`).join('')}</div>
+    <div class="panes">
+      <section class="pane" id="pane-0" role="tabpanel" aria-labelledby="tab-0">
+        <dl class="facts">
+          ${fact('Próxima parada', next ? esc(shortName(next.name)) : 'Fin del recorrido', next ? `parada ${p.next.by} · horario ${serviceTime(next.arr)}` : 'según horario')}
+          ${fact('Retraso', t.cancelled ? 'Cancelado' : t.delaySec != null ? esc(delayText(t.delaySec)) : 'Sin dato', t.cancelled ? 'según Renfe' : t.delaySec != null ? 'previsión de Renfe' : 'Renfe no ha publicado retraso')}
+          ${fact('Publicado', positions?.ok && lm ? `hace ${age(Date.now() - lm)}` : 'No disponible', positions?.ok && lm ? `${clock(lm)} · fichero de Renfe` : 'Renfe no responde')}
+          ${fact('Fuente', !t.position ? 'Horario oficial' : fresh ? 'Renfe en vivo' : 'Fichero antiguo', fresh || !t.position ? 'datos abiertos de Renfe' : 'posición de hace más de 2 min')}
+        </dl>
+        <h3>Paradas · horario oficial</h3>
+        ${stopList(t, p)}
+        <p class="note">${p.reached != null ? 'Avance según la estación que publica Renfe, no según la hora.' : 'Sin avance: Renfe no publica en qué parada está.'}</p>
+      </section>
+      <section class="pane" id="pane-1" role="tabpanel" aria-labelledby="tab-1">
+        <p class="ctx-lead">Solo informativo: no indica riesgo, conflicto ni distancia entre trenes.</p>
         ${corridor(ctx)}
       </section>
+      <section class="pane" id="pane-2" role="tabpanel" aria-labelledby="tab-2">
+        <h3>Recorrido en el mapa</h3>
+        ${routeSummary(route)}
+        <h3>Limitaciones de los datos</h3>
+        <ul class="limits">
+          <li>Solo Renfe alta velocidad, larga y media distancia. Iryo y Ouigo no publican posiciones abiertas; sin Cercanías ni mercancías.</li>
+          <li>Renfe no publica la hora de medición: «Publicado» es la hora del fichero.</li>
+          <li>Trenes sin posición publicada no aparecen en el mapa ni en «Corredor».</li>
+          <li>A veces el estado de Renfe y sus coordenadas no coinciden; se muestran tal cual.</li>
+        </ul>
+        <details class="tech">
+          <summary>Detalles técnicos</summary>
+          <ul>
+            <li>Posición: GTFS-Realtime de Renfe (AV/LD/MD)${lm ? `, fichero de las ${clock(lm, true)}` : ''}.</li>
+            <li>Recorrido: camino más corto por la red ferroviaria de OpenStreetMap entre paradas oficiales consecutivas; se descartan tramos sin vía cercana, sin conexión o incompatibles con el horario.${route?.osmTimestamp ? ` Datos OSM de ${esc(route.osmTimestamp.slice(0, 10))}.` : ''}</li>
+            ${route?.available ? `<li>Tramos: ${route.legs.map((l) => `${esc(shortName(l.from))} → ${esc(shortName(l.to))}: ${l.status === 'track' ? `${l.km} km por vía` : esc(LEG_STATUS[l.status])}`).join('; ')}.</li>` : ''}
+            <li>No se calcula velocidad ni riesgo. Viaje GTFS: ${esc(t.tripId)}.</li>
+          </ul>
+        </details>
+        ${RENFE_LINK}
+        ${NOTICE.replace('class="notice"', 'class="notice in-pane"')}
+      </section>
     </div>
-    <section class="route-sec" aria-labelledby="route-h">
-      <h3 id="route-h">Recorrido en el mapa</h3>
-      ${routeSummary(route)}
-      ${RENFE_LINK}
-    </section>
-    <details class="limits">
-      <summary>Limitaciones de los datos</summary>
-      <ul>
-        <li>Solo trenes de Renfe de alta velocidad, larga y media distancia. Iryo y Ouigo no publican posiciones abiertas; Cercanías no está incluido.</li>
-        <li>Renfe no publica la hora de medición de cada posición: «Publicado» es la hora del fichero.</li>
-        <li>Los trenes sin posición publicada no aparecen en el mapa ni en «Cerca del resto del recorrido».</li>
-        <li>El recorrido es una estimación; los tramos sin vía coherente no se dibujan.</li>
-        <li>A veces el estado que publica Renfe y sus coordenadas no coinciden; se muestran ambos tal cual.</li>
-      </ul>
-    </details>
-    <details class="tech">
-      <summary>Detalles técnicos</summary>
-      <ul>
-        <li>Posición: GTFS-Realtime de Renfe (AV/LD/MD)${lm ? `, fichero de las ${clock(lm, true)}` : ''}.</li>
-        <li>Recorrido: camino más corto por la red ferroviaria de OpenStreetMap entre paradas oficiales consecutivas; se descartan tramos sin vía cercana, sin conexión o incompatibles con el horario.${route?.osmTimestamp ? ` Datos OSM de ${esc(route.osmTimestamp.slice(0, 10))}.` : ''}</li>
-        ${route?.available ? `<li>Tramos: ${route.legs.map((l) => `${esc(shortName(l.from))} → ${esc(shortName(l.to))}: ${l.status === 'track' ? `${l.km} km por vía` : esc(LEG_STATUS[l.status])}`).join('; ')}.</li>` : ''}
-        <li>No se calcula velocidad ni riesgo. Viaje GTFS: ${esc(t.tripId)}.</li>
-      </ul>
-    </details>
     ${NOTICE}`;
+}
+
+/** Map callout above the selected train: what Renfe says about it, in two lines. */
+export function trainCallout(t) {
+  return `<p class="co-eyebrow">${trainName(t)}</p><p class="co-main">${whereText(t)}</p>
+    ${t.delaySec != null || t.cancelled ? `<p class="co-sub">${t.cancelled ? 'Cancelado según Renfe' : `${esc(delayText(t.delaySec))} · previsión de Renfe`}</p>` : ''}`;
+}
+
+/** Map callout beside the next stop (official timetable time). */
+export function nextCallout(t) {
+  const p = progress(t);
+  if (!p.next) return '';
+  const s = t.stops[p.next.idx];
+  return `<p class="co-eyebrow">Próxima parada</p><p class="co-main">${esc(shortName(s.name))}</p><p class="co-sub">horario ${serviceTime(s.arr)} · parada ${p.next.by}</p>`;
 }
 
 /** Placeholder sheet while a train loads, or when its number is not in today's timetable. */
@@ -164,7 +216,7 @@ export function infoCard(live) {
     <section><h3>Cobertura</h3>
     <ul>
       <li>Trenes de <strong>Renfe</strong> de alta velocidad, larga y media distancia, solo cuando Renfe publica su posición${live ? ` (ahora ${live.trains.length}; otros ${live.withoutPosition} circulan según el horario sin posición publicada)` : ''}.</li>
-      <li><strong>Iryo y Ouigo</strong> no publican posiciones abiertas: no aparecen. Cercanías no está incluido en este prototipo.</li>
+      <li><strong>Iryo y Ouigo</strong> no publican posiciones abiertas: no aparecen. Cercanías, mercancías y vehículos de mantenimiento no están incluidos. Que no aparezca un tren no significa que no haya tráfico.</li>
       <li>Estaciones: todas las del horario oficial de Renfe para estos servicios.</li>
     </ul></section>
     <section><h3>Precisión</h3>

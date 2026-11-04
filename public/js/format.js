@@ -1,4 +1,4 @@
-// Rail Safety Spain — shared display helpers (Madrid time, delays, escaping, search normalisation).
+// Atlas Ferroviario — shared display helpers (Madrid time, delays, escaping, search normalisation).
 
 const madridClockFmt = new Intl.DateTimeFormat('es-ES', { timeZone: 'Europe/Madrid', hour: '2-digit', minute: '2-digit' });
 const madridClockSecFmt = new Intl.DateTimeFormat('es-ES', { timeZone: 'Europe/Madrid', hour: '2-digit', minute: '2-digit', second: '2-digit' });

@@ -1,4 +1,4 @@
-// Rail Safety Spain — per-session observation history and honest freshness labels.
+// Atlas Ferroviario — per-session observation history and honest freshness labels.
 // Renfe's AV/LD feed publishes positions without a per-train measurement time, so we can only say WHEN A
 // POSITION APPEARED in a published file, never when it was measured. A position that stops changing could be
 // a stopped train OR stale telemetry; the feed cannot tell them apart, and neither do we.

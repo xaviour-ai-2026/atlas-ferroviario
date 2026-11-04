@@ -6,7 +6,7 @@
 | Renfe GTFS AV/LD (`ssl.renfe.com/gtransit/Fichero_AV_LD/google_transit.zip`) | Stations, timetables | CC BY 4.0 (same portal) | Same |
 | OpenFreeMap Fiord (`tiles.openfreemap.org`), restyled navy in the browser | Basemap (vector tiles, fonts, sprites) | [Free, no key](https://openfreemap.org/), [ToS](https://openfreemap.org/tos/): as-is, requests via Cloudflare | Attribution OpenFreeMap / © OpenMapTiles / © OpenStreetMap (from its TileJSON, shown by MapLibre) |
 | OpenStreetMap data (inside the basemap and overlay) | Map data | ODbL 1.0 | © OpenStreetMap contributors credited |
-| OpenStreetMap railway ways via [Overpass API](https://overpass-api.de/) (`railway=rail`, no yards/sidings, no metre gauge, Spain) | Network layer and estimated train routes | ODbL 1.0; Overpass public-instance guideline < 10,000 requests and < 1 GB per day | One ~30 MB request per 30 days with a unique User-Agent; cache kept local (`data/cache/`, not committed); "Recorridos: © OpenStreetMap (ODbL)" in map attribution; routes labelled as estimates |
+| OpenStreetMap railway ways via [Overpass API](https://overpass-api.de/) (`railway=rail`, no yards/sidings, no metre gauge, Spain) | Network layer and estimated train routes | ODbL 1.0; Overpass public-instance guideline < 10,000 requests and < 1 GB per day | One ~30 MB request per 30 days with a unique User-Agent; raw cache kept local (`data/cache/`, not committed); "Recorridos: © OpenStreetMap (ODbL)" in map attribution; routes labelled as estimates. The simplified network served at `/api/network` (and route geometry from `/api/route`) is a Derivative Database: if published, it must be offered under ODbL 1.0 (it is downloadable at those URLs; say so in the public README) |
 | OpenRailwayMap standard tiles (`tiles.openrailwaymap.org/standard/{z}/{x}/{y}.png`) | Optional detailed overlay (off by default) | [Tile policy](https://wiki.openstreetmap.org/wiki/OpenRailwayMap/API): free for public free apps, real Referer, stop on 429 | Credit "OpenRailwayMap"; browser sends its own Referer (never spoofed); overlay disabled after HTTP 429 or 6 failures; tiles only on demand |
 | MapLibre GL JS 6.16.0 | Map engine, vendored in `public/vendor/` | BSD-3-Clause, `LICENSE.txt` kept | Licence notice kept; integrity and provenance in `VENDOR.md` |
 | Project code | — | MIT (`LICENSE`) | — |
@@ -43,4 +43,15 @@ part of its drawn route still ahead, in route order, and (b) other trains the **
 next three stops within ±30 min. It does not compute distances between trains, closing speeds, separation, track
 occupancy, direction or risk, and says so. Trains without a published position, Iryo, Ouigo and Cercanías cannot
 appear; legs that are not drawn are not searched.
+
+## Data handling rules verified in the 2026-11-03 audit
+
+- One train number can have several GTFS trip variants (calendar variants, split trains published twice at the same
+  coordinates). Map, detail, route and corridor all use the variant Renfe is publishing, preferring the one that
+  reports a stop; the other half of a split train is not shown separately.
+- When Renfe reports `STOPPED_AT` a station more than 3 km from its own published coordinates, both are shown and the
+  disagreement is stated; nothing is corrected.
+- A positions file older than 2 minutes is labelled "datos antiguos"/"Fichero antiguo" and the corridor view lists
+  no nearby trains. Renfe publishes no per-train measurement time, so a single frozen train inside a fresh file
+  cannot be detected.
 

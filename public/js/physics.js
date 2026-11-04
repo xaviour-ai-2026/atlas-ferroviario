@@ -1,4 +1,4 @@
-// Rail Safety Spain — distance and average-speed helpers shared by the browser and the server.
+// Atlas Ferroviario — distance and average-speed helpers shared by the browser and the server.
 // Average speed is only ever computed between two observations whose own measurement times are
 // known and whose positions match a reliable track line. Anything less is suppressed with a reason.
 // Instantaneous speed, braking distance and collision risk are deliberately out of scope.

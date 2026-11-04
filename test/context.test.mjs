@@ -73,6 +73,8 @@ test('near-route is unavailable (with a reason) when no route is drawn or positi
   assert.deepEqual(none.near, { available: false, reason: 'route' });
   const down = corridorContext({ index, train, route, positioned: [], positionsOk: false, nowMs: NOW });
   assert.deepEqual(down.near, { available: false, reason: 'positions' });
+  const stale = corridorContext({ index, train, route, positioned: [at('08000', 39.705, -3.8)], positionsOk: true, positionsStale: true, nowMs: NOW });
+  assert.deepEqual(stale.near, { available: false, reason: 'stale' }, 'an old file must not look like an empty corridor');
 });
 
 test('shared stops: other timetable calls within ±30 min at the next stops only', () => {

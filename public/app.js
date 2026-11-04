@@ -1,13 +1,14 @@
-// Rail Safety Spain — one full-screen geographic map of Spain (MapLibre GL JS + OpenFreeMap, restyled deep navy), an
+// Atlas Ferroviario — one full-screen geographic map of Spain (MapLibre GL JS + OpenFreeMap, restyled deep navy), an
 // optional OpenRailwayMap overlay, Renfe stations and the train positions Renfe publishes. One search, one bottom sheet.
 // Three states: overview (whole network, calm) → route focus (a selected train's estimated route over real OSM
-// track becomes the hero, everything else recedes, the camera tilts into the corridor) → route awareness (the sheet:
-// progress strip, facts, corridor context). Data comes only from the local read-only proxy (server.mjs).
+// track becomes the hero, everything else recedes, the camera tilts into the corridor under a horizon glow) → route
+// awareness (desktop: Atlas-style right panel + stop timeline + map callouts; phones: bottom sheet; both with
+// swipeable Viaje · Corredor · Datos panes). Data comes only from the local read-only proxy (server.mjs).
 // Positions are drawn exactly where Renfe reports them; nothing is interpolated or animated along the track.
 
 import * as maplibregl from './vendor/maplibre-gl-6.16.0/maplibre-gl.mjs';
-import { trainState } from './js/observations.js';
-import { trainCard, pendingCard, stationCard, infoCard, progress } from './js/card.js';
+import { trainState, FEED_STALE_MS } from './js/observations.js';
+import { trainCard, pendingCard, stationCard, infoCard, progress, stopStrip, trainCallout, nextCallout } from './js/card.js';
 import { age, esc, norm, shortName, delayText } from './js/format.js';
 
 const POLL_MS = 15_000;
@@ -16,13 +17,15 @@ const ORM_TILES = 'https://tiles.openrailwaymap.org/standard/{z}/{x}/{y}.png';
 const ORM_MAX_ERRORS = 6; // then stop asking (tile policy: back off on repeated failures, stop on 429)
 const SPAIN = [[-10.2, 35.6], [4.6, 44.0]];
 const MAJOR_STATIONS = 35; // busiest stations shown at national zoom; the rest appear when zoomed in
-const FOCUS_PITCH = 38;    // gentle tilt in route focus: depth without hiding the geography
+const FOCUS_PITCH = 50;    // Atlas "low tilt": depth and horizon glow without crushing the far end of the route
 const reducedMotion = () => matchMedia('(prefers-reduced-motion: reduce)').matches;
 const $ = (id) => document.getElementById(id);
 
 const state = { stations: [], major: new Set(), live: null, card: null, query: '', overlay: 'off', ormErrors: 0, basemapFailed: false };
 // card: { kind: 'train', number, train, route, ctx } | { kind: 'station', id, calls } | { kind: 'info' } | null
 const phone = () => matchMedia('(max-width: 700px)').matches;
+// Wide screens show details in a right-hand panel; narrower ones in a bottom sheet (must match styles.css).
+const sideMode = () => matchMedia('(min-width: 901px)').matches;
 
 // ---------- map ----------
 const map = new maplibregl.Map({
@@ -33,7 +36,7 @@ const map = new maplibregl.Map({
   maxBounds: [[-22, 25], [14, 51]], // generous: tall phone screens must still be able to show all of Spain
   minZoom: 4,
   maxZoom: 15,
-  maxPitch: 50,
+  maxPitch: 60,
   // Basemap credits come from OpenFreeMap's TileJSON; the overlay's from its source; Renfe's is added here.
   attributionControl: { compact: true, customAttribution: 'Trenes: <a href="https://data.renfe.com/" target="_blank" rel="noopener">Renfe Operadora</a> (CC BY 4.0) · Recorridos: © <a href="https://www.openstreetmap.org/copyright" target="_blank" rel="noopener">OpenStreetMap</a> (ODbL)' },
 });
@@ -97,10 +100,18 @@ selEl.className = 'sel-marker';
 selEl.setAttribute('aria-hidden', 'true');
 selEl.innerHTML = '<span class="ring"></span><span class="ring r2"></span><span class="core"></span>';
 const selMarker = new maplibregl.Marker({ element: selEl });
+// Atlas-style callouts: what Renfe says about the selected train, and its next stop. Text only, anchored to
+// published coordinates and official stop locations.
+const callout = (cls) => { const el = document.createElement('div'); el.className = `callout ${cls}`; el.setAttribute('aria-hidden', 'true'); return el; };
+const trainCo = new maplibregl.Marker({ element: callout('co-train'), anchor: 'bottom', offset: [0, -30] });
+const nextCo = new maplibregl.Marker({ element: callout('co-next'), anchor: 'left', offset: [20, 0] });
 
 /** Our sources and layers; re-added whenever a style (basemap or fallback) finishes loading. */
 function addLayers() {
   if (!state.basemapFailed) navyBasemap();
+  // Night-sky horizon and distance fog: only visible when the camera tilts into a corridor.
+  map.setSky({ 'sky-color': '#081120', 'horizon-color': '#15485a', 'fog-color': '#0b1524', 'sky-horizon-blend': 0.6,
+    'horizon-fog-blend': 0.7, 'fog-ground-blend': 0.35, 'atmosphere-blend': 0 });
   addTrainIcons();
   const hasGlyphs = !!map.getStyle().glyphs;
   const firstSymbol = map.getStyle().layers.find((l) => l.type === 'symbol')?.id;
@@ -170,6 +181,7 @@ function addLayers() {
   paintData();
 }
 map.on('style.load', addLayers);
+map.on('moveend', () => calloutsApart());
 // The Fiord style asks for icons its sprite lacks (e.g. "circle-11" for place dots): supply a small muted dot.
 map.setMissingStyleImageResolver(async (id) => {
   if (map.hasImage(id)) return;
@@ -239,7 +251,27 @@ function paintData() {
     if (map.getLayer(id)) map.setLayoutProperty(id, 'visibility', c ? 'none' : 'visible');
   }
   const pos = c?.train?.position;
-  if (pos) selMarker.setLngLat([pos.lon, pos.lat]).addTo(map); else selMarker.remove();
+  if (pos) {
+    selMarker.setLngLat([pos.lon, pos.lat]).addTo(map);
+    trainCo.getElement().innerHTML = trainCallout(c.train);
+    trainCo.setLngLat([pos.lon, pos.lat]).addTo(map);
+  } else { selMarker.remove(); trainCo.remove(); }
+  // The next-stop callout only when the train callout does not already name that stop ("En camino a X").
+  const nextStop = p?.next ? c.train.stops[p.next.idx] : null;
+  const named = pos && c.train.reportedStatus !== 'STOPPED_AT' && c.train.reportedStopId === nextStop?.id;
+  if (nextStop && Number.isFinite(nextStop.lat) && !named) {
+    nextCo.getElement().innerHTML = nextCallout(c.train);
+    nextCo.setLngLat([nextStop.lon, nextStop.lat]).addTo(map);
+  } else nextCo.remove();
+  calloutsApart();
+}
+
+/** Hide the next-stop callout while it would sit on top of the train's (checked after every camera move). */
+function calloutsApart() {
+  const a = trainCo.getLngLat?.(), b = nextCo.getLngLat?.();
+  if (!a || !b || !trainCo.getElement().isConnected || !nextCo.getElement().isConnected) return;
+  const pa = map.project(a), pb = map.project(b);
+  nextCo.getElement().style.visibility = Math.hypot(pa.x - pb.x, pa.y - pb.y) < 190 ? 'hidden' : 'visible';
 }
 
 /** One calm status chip: how many trains Renfe publishes, how fresh the file is, and who is missing. */
@@ -250,7 +282,11 @@ function renderStatus() {
   const info = '<button class="info-link" data-action="info" aria-label="Más información sobre la cobertura">ⓘ</button>';
   if (!state.live) el.innerHTML = `Cargando datos oficiales de Renfe…${base}`;
   else if (!p?.ok) el.innerHTML = `<strong>Renfe no responde ahora.</strong> Sin posiciones; el horario sigue disponible.${base} ${info}`;
-  else el.innerHTML = `<span class="live-dot" aria-hidden="true"></span><strong>${state.live.trains.length} trenes Renfe</strong><span class="sep">·</span>hace ${age(Date.now() - p.lastModified)}<span class="sep">·</span><span class="muted">sin Iryo ni Ouigo</span>${base} ${info}`;
+  else {
+    // An old positions file must not read as "live": no glowing dot, and say so.
+    const stale = Date.now() - p.lastModified > FEED_STALE_MS;
+    el.innerHTML = `<span class="live-dot${stale ? ' stale' : ''}" aria-hidden="true"></span><strong>${state.live.trains.length} trenes Renfe</strong><span class="sep">·</span>${stale ? 'datos antiguos · ' : ''}hace ${age(Date.now() - p.lastModified)}<span class="sep">·</span><span class="muted">sin Iryo ni Ouigo</span>${base} ${info}`;
+  }
 }
 
 // ---------- card ----------
@@ -268,6 +304,7 @@ function renderCard({ focus = false } = {}) {
   el.hidden = !c;
   document.body.classList.toggle('card-open', !!c);
   document.body.classList.toggle('focus', c?.kind === 'train');
+  renderTimeline();
   if (!c) { document.body.classList.remove('sheet-expanded'); return; }
   // Phones: fold the (still one-tap) attribution while the sheet is open, so it does not sit over the train.
   if (phone()) document.querySelector('.maplibregl-ctrl-attrib')?.classList.remove('maplibregl-compact-show');
@@ -278,11 +315,14 @@ function renderCard({ focus = false } = {}) {
   const key = active?.dataset.action ? `[data-action="${active.dataset.action}"][data-value="${CSS.escape(active.dataset.value ?? '')}"]`
     : active?.matches('h2, summary, a') ? active.tagName.toLowerCase() : null;
   const open = Object.fromEntries([...el.querySelectorAll('details')].map((d) => [d.className, d.open]));
-  el.innerHTML = c.kind === 'train' ? (c.train ? trainCard(c.train, state.live?.positions, c.route, c.ctx) : pendingCard(c.number, c.missing))
+  const paneScroll = [...el.querySelectorAll('.pane')].map((x) => x.scrollTop);
+  el.innerHTML = c.kind === 'train' ? (c.train ? trainCard(c.train, state.live?.positions, c.route, c.ctx, c.tab ?? 0) : pendingCard(c.number, c.missing))
     : c.kind === 'station' ? stationCard(state.stations.find((s) => s.id === c.id) ?? { name: '' }, c.calls)
     : infoCard(state.live);
   if (!focus) for (const d of el.querySelectorAll('details')) if (open[d.className]) d.open = true;
   el.scrollTop = focus ? 0 : scroll;
+  if (!focus) el.querySelectorAll('.pane').forEach((x, i) => { x.scrollTop = paneScroll[i] ?? 0; });
+  showTab(c.tab ?? 0, false);
   const strip = el.querySelector('.strip');
   if (strip && !focus && stripScroll != null) strip.scrollLeft = stripScroll;
   else if (strip) { // first view: bring the next stop into view
@@ -293,14 +333,64 @@ function renderCard({ focus = false } = {}) {
   else if (key) el.querySelector(key)?.focus({ preventScroll: true });
 }
 
-/** Height of the map left uncovered by the sheet, for camera padding and floating controls. */
-const sheetHeight = () => ($('card').hidden ? 0 : $('card').offsetHeight);
-new ResizeObserver(() => document.documentElement.style.setProperty('--sheet-h', `${sheetHeight()}px`)).observe($('card'));
+/** Desktop: the Atlas-style stop timeline along the bottom of the map (the same strip the phone sheet shows). */
+function renderTimeline() {
+  const el = $('timeline');
+  const t = state.card?.kind === 'train' ? state.card.train : null;
+  el.hidden = !t;
+  if (!t) return;
+  const left = el.querySelector('.strip')?.scrollLeft;
+  el.innerHTML = stopStrip(t);
+  const strip = el.querySelector('.strip');
+  const next = strip.querySelector('.next');
+  strip.scrollLeft = left ?? (next ? next.offsetLeft - strip.clientWidth / 2 + next.offsetWidth / 2 : 0);
+}
+
+/** Show one of the Viaje · Corredor · Datos panes (a scroll-snap carousel: tabs, swipe or arrow keys). */
+function showTab(i, animate = true) {
+  const panes = $('card').querySelector('.panes');
+  if (!panes) return;
+  if (state.card) state.card.tab = i;
+  $('card').querySelectorAll('[role="tab"]').forEach((b, k) => { b.setAttribute('aria-selected', String(k === i)); b.tabIndex = k === i ? 0 : -1; });
+  const left = i * panes.clientWidth;
+  panes.scrollTo({ left, behavior: animate && !reducedMotion() ? 'smooth' : 'instant' });
+  // Some environments never run the smooth scroll (e.g. a page that is not painting): land on the pane anyway.
+  if (animate) setTimeout(() => { if (state.card?.tab === i && Math.abs(panes.scrollLeft - left) > 2) panes.scrollTo({ left, behavior: 'instant' }); }, 450);
+}
+// A swipe on the carousel selects the pane it settles on (debounced scroll: Safari lacks "scrollend").
+let settle;
+$('card').addEventListener('scroll', (e) => {
+  const panes = e.target;
+  if (!panes.classList?.contains('panes') || !state.card) return;
+  clearTimeout(settle);
+  settle = setTimeout(() => {
+    const i = Math.round(panes.scrollLeft / panes.clientWidth);
+    if (i !== state.card?.tab) showTab(i, false);
+  }, 140);
+}, true);
+$('card').addEventListener('keydown', (e) => {
+  const tab = e.target.closest('[role="tab"]');
+  if (!tab || !['ArrowLeft', 'ArrowRight'].includes(e.key)) return;
+  const n = $('card').querySelectorAll('[role="tab"]').length;
+  const i = (Number(tab.dataset.value) + (e.key === 'ArrowRight' ? 1 : n - 1)) % n;
+  showTab(i); $('card').querySelector(`#tab-${i}`)?.focus();
+});
+
+/** Height of the map covered at the bottom (phone sheet, or the desktop timeline), for camera padding and controls. */
+const sheetHeight = () => (sideMode() ? ($('timeline').hidden ? 0 : $('timeline').offsetHeight)
+  : $('card').hidden ? 0 : $('card').offsetHeight);
+/** Width covered on the right by the desktop panel. */
+const panelWidth = () => (sideMode() && !$('card').hidden ? $('card').offsetWidth + 16 : 0);
+const coverage = new ResizeObserver(() => {
+  document.documentElement.style.setProperty('--sheet-h', `${sheetHeight()}px`);
+  document.documentElement.style.setProperty('--panel-w', `${panelWidth()}px`);
+});
+coverage.observe($('card')); coverage.observe($('timeline'));
 
 /** Move the camera, keeping the target in the part of the map the sheet does not cover. Map padding is never left
  * set (it would skew every later camera fit); the sheet is accounted for with an offset instead. */
 function ease(opts) {
-  const offset = [0, -sheetHeight() / 2];
+  const offset = [-panelWidth() / 2, -sheetHeight() / 2];
   return map.easeTo({ ...opts, offset, duration: reducedMotion() ? 0 : 700 });
 }
 
@@ -326,12 +416,14 @@ function focusJourney() {
   if (c.train.position) pts.push([c.train.position.lon, c.train.position.lat]);
   if (!pts.length) return;
   const lons = pts.map((p) => p[0]), lats = pts.map((p) => p[1]);
-  const padding = phone() ? { top: 84, bottom: sheetHeight() + 28, left: 34, right: 34 }
-    : { top: 96, bottom: sheetHeight() + 60, left: 90, right: 90 };
+  const padding = sideMode() ? { top: 110, bottom: sheetHeight() + 50, left: 70, right: panelWidth() + 70 }
+    : { top: 84, bottom: sheetHeight() + 28, left: 34, right: 34 };
   const cam = map.cameraForBounds([[Math.min(...lons), Math.min(...lats)], [Math.max(...lons), Math.max(...lats)]], { padding, maxZoom: 10 });
   if (!cam) return;
   // Tilting pushes the far side of the route away: step back a little so the whole journey stays in view.
-  const target = { center: cam.center, zoom: cam.zoom - 0.2, pitch: FOCUS_PITCH, bearing: 0 };
+  // Phones have little map above the sheet: a softer tilt and a slightly wider view keep both ends in sight.
+  const target = sideMode() ? { center: cam.center, zoom: cam.zoom - 0.2, pitch: FOCUS_PITCH, bearing: 0 }
+    : { center: cam.center, zoom: cam.zoom - 0.7, pitch: 25, bearing: 0 };
   if (reducedMotion()) map.jumpTo(target); else map.flyTo({ ...target, duration: 1600, curve: 1.3, essential: true });
 }
 /** Back to the whole country, flat (closes any sheet). */
@@ -439,6 +531,7 @@ document.addEventListener('click', (e) => {
   if (action === 'close') closeCard();
   if (action === 'info') openInfo();
   if (action === 'sheet') document.body.classList.toggle('sheet-expanded');
+  if (action === 'tab') showTab(Number(value));
 });
 document.addEventListener('keydown', (e) => {
   if (e.key === 'Escape') { if (state.query) clearSearch(); else closeCard(); }
