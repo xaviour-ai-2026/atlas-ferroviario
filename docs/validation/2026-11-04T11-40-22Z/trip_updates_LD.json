@@ -1,0 +1,2692 @@
+{
+  "header": {
+    "gtfsRealtimeVersion": "2.0",
+    "timestamp": "1793792423"
+  },
+  "entity": [{
+    "id": "TUUPDATE_0019012026-11-04",
+    "tripUpdate": {
+      "trip": {
+        "tripId": "0019012026-11-04",
+        "scheduleRelationship": "SCHEDULED"
+      },
+      "stopTimeUpdate": [{
+        "arrival": {
+          "delay": 0,
+          "time": "1793787660"
+        },
+        "stopId": "37500"
+      }],
+      "delay": 0
+    }
+  }, {
+    "id": "TUUPDATE_0019022026-11-04",
+    "tripUpdate": {
+      "trip": {
+        "tripId": "0019022026-11-04",
+        "scheduleRelationship": "SCHEDULED"
+      },
+      "stopTimeUpdate": [{
+        "arrival": {
+          "delay": 0,
+          "time": "1793787660"
+        },
+        "stopId": "37500"
+      }],
+      "delay": 0
+    }
+  }, {
+    "id": "TUUPDATE_0028312026-11-04",
+    "tripUpdate": {
+      "trip": {
+        "tripId": "0028312026-11-04",
+        "scheduleRelationship": "SCHEDULED"
+      },
+      "stopTimeUpdate": [{
+        "arrival": {
+          "delay": -180,
+          "time": "1793788080"
+        },
+        "stopId": "11200"
+      }],
+      "delay": -180
+    }
+  }, {
+    "id": "TUUPDATE_0146012026-11-04",
+    "tripUpdate": {
+      "trip": {
+        "tripId": "0146012026-11-04",
+        "scheduleRelationship": "SCHEDULED"
+      },
+      "stopTimeUpdate": [{
+        "arrival": {
+          "delay": 420,
+          "time": "1793787550"
+        },
+        "stopId": "61303"
+      }],
+      "delay": 420
+    }
+  }, {
+    "id": "TUUPDATE_0146022026-11-04",
+    "tripUpdate": {
+      "trip": {
+        "tripId": "0146022026-11-04",
+        "scheduleRelationship": "SCHEDULED"
+      },
+      "stopTimeUpdate": [{
+        "arrival": {
+          "delay": 420,
+          "time": "1793787550"
+        },
+        "stopId": "61303"
+      }],
+      "delay": 420
+    }
+  }, {
+    "id": "TUUPDATE_0146032026-11-04",
+    "tripUpdate": {
+      "trip": {
+        "tripId": "0146032026-11-04",
+        "scheduleRelationship": "SCHEDULED"
+      },
+      "stopTimeUpdate": [{
+        "arrival": {
+          "delay": 420,
+          "time": "1793787550"
+        },
+        "stopId": "61303"
+      }],
+      "delay": 420
+    }
+  }, {
+    "id": "TUUPDATE_0046312026-11-04",
+    "tripUpdate": {
+      "trip": {
+        "tripId": "0046312026-11-04",
+        "scheduleRelationship": "SCHEDULED"
+      },
+      "stopTimeUpdate": [{
+        "arrival": {
+          "delay": 360,
+          "time": "1793788800"
+        },
+        "stopId": "65402"
+      }],
+      "delay": 360
+    }
+  }, {
+    "id": "TUUPDATE_0053312026-11-04",
+    "tripUpdate": {
+      "trip": {
+        "tripId": "0053312026-11-04",
+        "scheduleRelationship": "SCHEDULED"
+      },
+      "stopTimeUpdate": [{
+        "arrival": {
+          "delay": 300,
+          "time": "1793788690"
+        },
+        "stopId": "71801"
+      }],
+      "delay": 300
+    }
+  }, {
+    "id": "TUUPDATE_0053322026-11-04",
+    "tripUpdate": {
+      "trip": {
+        "tripId": "0053322026-11-04",
+        "scheduleRelationship": "SCHEDULED"
+      },
+      "stopTimeUpdate": [{
+        "arrival": {
+          "delay": 300,
+          "time": "1793788690"
+        },
+        "stopId": "71801"
+      }],
+      "delay": 300
+    }
+  }, {
+    "id": "TUUPDATE_0043812026-11-04",
+    "tripUpdate": {
+      "trip": {
+        "tripId": "0043812026-11-04",
+        "scheduleRelationship": "SCHEDULED"
+      },
+      "stopTimeUpdate": [{
+        "arrival": {
+          "delay": 420,
+          "time": "1793788090"
+        },
+        "stopId": "81100"
+      }],
+      "delay": 420
+    }
+  }, {
+    "id": "TUUPDATE_0043822026-11-04",
+    "tripUpdate": {
+      "trip": {
+        "tripId": "0043822026-11-04",
+        "scheduleRelationship": "SCHEDULED"
+      },
+      "stopTimeUpdate": [{
+        "arrival": {
+          "delay": 420,
+          "time": "1793788090"
+        },
+        "stopId": "81100"
+      }],
+      "delay": 420
+    }
+  }, {
+    "id": "TUUPDATE_0043832026-11-04",
+    "tripUpdate": {
+      "trip": {
+        "tripId": "0043832026-11-04",
+        "scheduleRelationship": "SCHEDULED"
+      },
+      "stopTimeUpdate": [{
+        "arrival": {
+          "delay": 420,
+          "time": "1793788090"
+        },
+        "stopId": "81100"
+      }],
+      "delay": 420
+    }
+  }, {
+    "id": "TUUPDATE_0060212026-11-04",
+    "tripUpdate": {
+      "trip": {
+        "tripId": "0060212026-11-04",
+        "scheduleRelationship": "SCHEDULED"
+      },
+      "stopTimeUpdate": [{
+        "arrival": {
+          "delay": -60,
+          "time": "1793787000"
+        },
+        "stopId": "70600"
+      }],
+      "delay": -60
+    }
+  }, {
+    "id": "TUUPDATE_0060512026-11-04",
+    "tripUpdate": {
+      "trip": {
+        "tripId": "0060512026-11-04",
+        "scheduleRelationship": "SCHEDULED"
+      },
+      "stopTimeUpdate": [{
+        "arrival": {
+          "delay": 360,
+          "time": "1793786290"
+        },
+        "stopId": "81202"
+      }],
+      "delay": 360
+    }
+  }, {
+    "id": "TUUPDATE_0062112026-11-04",
+    "tripUpdate": {
+      "trip": {
+        "tripId": "0062112026-11-04",
+        "scheduleRelationship": "SCHEDULED"
+      },
+      "stopTimeUpdate": [{
+        "arrival": {
+          "delay": 1260,
+          "time": "1793788190"
+        },
+        "stopId": "20100"
+      }, {
+        "stopId": "04040",
+        "scheduleRelationship": "SKIPPED"
+      }, {
+        "stopId": "78400",
+        "scheduleRelationship": "SKIPPED"
+      }, {
+        "stopId": "04104",
+        "scheduleRelationship": "SKIPPED"
+      }, {
+        "stopId": "71801",
+        "scheduleRelationship": "SKIPPED"
+      }],
+      "delay": 1260
+    }
+  }, {
+    "id": "TUUPDATE_0062122026-11-04",
+    "tripUpdate": {
+      "trip": {
+        "tripId": "0062122026-11-04",
+        "scheduleRelationship": "SCHEDULED"
+      },
+      "stopTimeUpdate": [{
+        "arrival": {
+          "delay": 1260,
+          "time": "1793788190"
+        },
+        "stopId": "20100"
+      }, {
+        "stopId": "04040",
+        "scheduleRelationship": "SKIPPED"
+      }, {
+        "stopId": "78400",
+        "scheduleRelationship": "SKIPPED"
+      }, {
+        "stopId": "04104",
+        "scheduleRelationship": "SKIPPED"
+      }, {
+        "stopId": "71801",
+        "scheduleRelationship": "SKIPPED"
+      }],
+      "delay": 1260
+    }
+  }, {
+    "id": "TUUPDATE_0062132026-11-04",
+    "tripUpdate": {
+      "trip": {
+        "tripId": "0062132026-11-04",
+        "scheduleRelationship": "SCHEDULED"
+      },
+      "stopTimeUpdate": [{
+        "arrival": {
+          "delay": 1260,
+          "time": "1793788190"
+        },
+        "stopId": "20100"
+      }, {
+        "stopId": "04040",
+        "scheduleRelationship": "SKIPPED"
+      }, {
+        "stopId": "78400",
+        "scheduleRelationship": "SKIPPED"
+      }, {
+        "stopId": "04104",
+        "scheduleRelationship": "SKIPPED"
+      }, {
+        "stopId": "71801",
+        "scheduleRelationship": "SKIPPED"
+      }],
+      "delay": 1260
+    }
+  }, {
+    "id": "TUUPDATE_0062142026-11-04",
+    "tripUpdate": {
+      "trip": {
+        "tripId": "0062142026-11-04",
+        "scheduleRelationship": "SCHEDULED"
+      },
+      "stopTimeUpdate": [{
+        "arrival": {
+          "delay": 1260,
+          "time": "1793788190"
+        },
+        "stopId": "20100"
+      }, {
+        "stopId": "04040",
+        "scheduleRelationship": "SKIPPED"
+      }, {
+        "stopId": "78400",
+        "scheduleRelationship": "SKIPPED"
+      }, {
+        "stopId": "04104",
+        "scheduleRelationship": "SKIPPED"
+      }, {
+        "stopId": "71801",
+        "scheduleRelationship": "SKIPPED"
+      }],
+      "delay": 1260
+    }
+  }, {
+    "id": "TUUPDATE_0062152026-11-04",
+    "tripUpdate": {
+      "trip": {
+        "tripId": "0062152026-11-04",
+        "scheduleRelationship": "SCHEDULED"
+      },
+      "stopTimeUpdate": [{
+        "arrival": {
+          "delay": 1260,
+          "time": "1793788190"
+        },
+        "stopId": "20100"
+      }, {
+        "stopId": "04040",
+        "scheduleRelationship": "SKIPPED"
+      }, {
+        "stopId": "78400",
+        "scheduleRelationship": "SKIPPED"
+      }, {
+        "stopId": "04104",
+        "scheduleRelationship": "SKIPPED"
+      }, {
+        "stopId": "71801",
+        "scheduleRelationship": "SKIPPED"
+      }],
+      "delay": 1260
+    }
+  }, {
+    "id": "TUUPDATE_0062212026-11-04",
+    "tripUpdate": {
+      "trip": {
+        "tripId": "0062212026-11-04",
+        "scheduleRelationship": "SCHEDULED"
+      },
+      "stopTimeUpdate": [{
+        "arrival": {
+          "delay": 1500,
+          "time": "1793788640"
+        },
+        "stopId": "80108"
+      }],
+      "delay": 1500
+    }
+  }, {
+    "id": "TUUPDATE_0062222026-11-04",
+    "tripUpdate": {
+      "trip": {
+        "tripId": "0062222026-11-04",
+        "scheduleRelationship": "SCHEDULED"
+      },
+      "stopTimeUpdate": [{
+        "arrival": {
+          "delay": 1500,
+          "time": "1793788640"
+        },
+        "stopId": "80108"
+      }],
+      "delay": 1500
+    }
+  }, {
+    "id": "TUUPDATE_0062232026-11-04",
+    "tripUpdate": {
+      "trip": {
+        "tripId": "0062232026-11-04",
+        "scheduleRelationship": "SCHEDULED"
+      },
+      "stopTimeUpdate": [{
+        "arrival": {
+          "delay": 1500,
+          "time": "1793788640"
+        },
+        "stopId": "80108"
+      }],
+      "delay": 1500
+    }
+  }, {
+    "id": "TUUPDATE_0062242026-11-04",
+    "tripUpdate": {
+      "trip": {
+        "tripId": "0062242026-11-04",
+        "scheduleRelationship": "SCHEDULED"
+      },
+      "stopTimeUpdate": [{
+        "arrival": {
+          "delay": 1500,
+          "time": "1793788640"
+        },
+        "stopId": "80108"
+      }],
+      "delay": 1500
+    }
+  }, {
+    "id": "TUUPDATE_0062252026-11-04",
+    "tripUpdate": {
+      "trip": {
+        "tripId": "0062252026-11-04",
+        "scheduleRelationship": "SCHEDULED"
+      },
+      "stopTimeUpdate": [{
+        "arrival": {
+          "delay": 1500,
+          "time": "1793788640"
+        },
+        "stopId": "80108"
+      }],
+      "delay": 1500
+    }
+  }, {
+    "id": "TUUPDATE_0062262026-11-04",
+    "tripUpdate": {
+      "trip": {
+        "tripId": "0062262026-11-04",
+        "scheduleRelationship": "SCHEDULED"
+      },
+      "stopTimeUpdate": [{
+        "arrival": {
+          "delay": 1500,
+          "time": "1793788640"
+        },
+        "stopId": "80108"
+      }],
+      "delay": 1500
+    }
+  }, {
+    "id": "TUUPDATE_0107112026-11-04",
+    "tripUpdate": {
+      "trip": {
+        "tripId": "0107112026-11-04",
+        "scheduleRelationship": "SCHEDULED"
+      },
+      "stopTimeUpdate": [{
+        "arrival": {
+          "delay": 180,
+          "time": "1793780940"
+        },
+        "stopId": "60911"
+      }],
+      "delay": 180
+    }
+  }, {
+    "id": "TUUPDATE_0110112026-11-04",
+    "tripUpdate": {
+      "trip": {
+        "tripId": "0110112026-11-04",
+        "scheduleRelationship": "SCHEDULED"
+      },
+      "stopTimeUpdate": [{
+        "arrival": {
+          "delay": 840,
+          "time": "1793788680"
+        },
+        "stopId": "65000"
+      }],
+      "delay": 840
+    }
+  }, {
+    "id": "TUUPDATE_0110122026-11-04",
+    "tripUpdate": {
+      "trip": {
+        "tripId": "0110122026-11-04",
+        "scheduleRelationship": "SCHEDULED"
+      },
+      "stopTimeUpdate": [{
+        "arrival": {
+          "delay": 840,
+          "time": "1793788680"
+        },
+        "stopId": "65000"
+      }],
+      "delay": 840
+    }
+  }, {
+    "id": "TUUPDATE_0111212026-11-04",
+    "tripUpdate": {
+      "trip": {
+        "tripId": "0111212026-11-04",
+        "scheduleRelationship": "SCHEDULED"
+      },
+      "stopTimeUpdate": [{
+        "arrival": {
+          "delay": 600,
+          "time": "1793787600"
+        },
+        "stopId": "04104"
+      }],
+      "delay": 600
+    }
+  }, {
+    "id": "TUUPDATE_0309312026-11-04",
+    "tripUpdate": {
+      "trip": {
+        "tripId": "0309312026-11-04",
+        "scheduleRelationship": "SCHEDULED"
+      },
+      "stopTimeUpdate": [{
+        "arrival": {
+          "delay": 1620,
+          "time": "1793787290"
+        },
+        "stopId": "04104"
+      }],
+      "delay": 1620
+    }
+  }, {
+    "id": "TUUPDATE_0309322026-11-04",
+    "tripUpdate": {
+      "trip": {
+        "tripId": "0309322026-11-04",
+        "scheduleRelationship": "SCHEDULED"
+      },
+      "stopTimeUpdate": [{
+        "arrival": {
+          "delay": 1620,
+          "time": "1793787290"
+        },
+        "stopId": "04104"
+      }],
+      "delay": 1620
+    }
+  }, {
+    "id": "TUUPDATE_0330412026-11-04",
+    "tripUpdate": {
+      "trip": {
+        "tripId": "0330412026-11-04",
+        "scheduleRelationship": "SCHEDULED"
+      },
+      "stopTimeUpdate": [{
+        "arrival": {
+          "delay": 900,
+          "time": "1793788080"
+        },
+        "stopId": "04007"
+      }],
+      "delay": 900
+    }
+  }, {
+    "id": "TUUPDATE_0330312026-11-04",
+    "tripUpdate": {
+      "trip": {
+        "tripId": "0330312026-11-04",
+        "scheduleRelationship": "SCHEDULED"
+      },
+      "stopTimeUpdate": [{
+        "arrival": {
+          "delay": 2220,
+          "time": "1793789010"
+        },
+        "stopId": "04040"
+      }],
+      "delay": 2220
+    }
+  }, {
+    "id": "TUUPDATE_0311212026-11-04",
+    "tripUpdate": {
+      "trip": {
+        "tripId": "0311212026-11-04",
+        "scheduleRelationship": "SCHEDULED"
+      },
+      "stopTimeUpdate": [{
+        "arrival": {
+          "delay": 1380,
+          "time": "1793783820"
+        },
+        "stopId": "04040"
+      }],
+      "delay": 1380
+    }
+  }, {
+    "id": "TUUPDATE_0311312026-11-04",
+    "tripUpdate": {
+      "trip": {
+        "tripId": "0311312026-11-04",
+        "scheduleRelationship": "SCHEDULED"
+      },
+      "stopTimeUpdate": [{
+        "arrival": {
+          "delay": 2100,
+          "time": "1793786700"
+        },
+        "stopId": "70600"
+      }],
+      "delay": 2100
+    }
+  }, {
+    "id": "TUUPDATE_0311342026-11-04",
+    "tripUpdate": {
+      "trip": {
+        "tripId": "0311342026-11-04",
+        "scheduleRelationship": "SCHEDULED"
+      },
+      "stopTimeUpdate": [{
+        "arrival": {
+          "delay": 2100,
+          "time": "1793786700"
+        },
+        "stopId": "70600"
+      }],
+      "delay": 2100
+    }
+  }, {
+    "id": "TUUPDATE_0312212026-11-04",
+    "tripUpdate": {
+      "trip": {
+        "tripId": "0312212026-11-04",
+        "scheduleRelationship": "SCHEDULED"
+      },
+      "stopTimeUpdate": [{
+        "arrival": {
+          "delay": 120,
+          "time": "1793788530"
+        },
+        "stopId": "78400"
+      }],
+      "delay": 120
+    }
+  }, {
+    "id": "TUUPDATE_0312222026-11-04",
+    "tripUpdate": {
+      "trip": {
+        "tripId": "0312222026-11-04",
+        "scheduleRelationship": "SCHEDULED"
+      },
+      "stopTimeUpdate": [{
+        "arrival": {
+          "delay": 120,
+          "time": "1793788530"
+        },
+        "stopId": "78400"
+      }],
+      "delay": 120
+    }
+  }, {
+    "id": "TUUPDATE_0407212026-11-04",
+    "tripUpdate": {
+      "trip": {
+        "tripId": "0407212026-11-04",
+        "scheduleRelationship": "SCHEDULED"
+      },
+      "stopTimeUpdate": [{
+        "arrival": {
+          "delay": -240,
+          "time": "1793785680"
+        },
+        "stopId": "17000"
+      }, {
+        "stopId": "17000",
+        "scheduleRelationship": "SKIPPED"
+      }, {
+        "stopId": "03208",
+        "scheduleRelationship": "SKIPPED"
+      }, {
+        "stopId": "60600",
+        "scheduleRelationship": "SKIPPED"
+      }, {
+        "stopId": "03309",
+        "scheduleRelationship": "SKIPPED"
+      }, {
+        "stopId": "60911",
+        "scheduleRelationship": "SKIPPED"
+      }],
+      "delay": -240
+    }
+  }, {
+    "id": "TUUPDATE_0407222026-11-04",
+    "tripUpdate": {
+      "trip": {
+        "tripId": "0407222026-11-04",
+        "scheduleRelationship": "SCHEDULED"
+      },
+      "stopTimeUpdate": [{
+        "arrival": {
+          "delay": -240,
+          "time": "1793785680"
+        },
+        "stopId": "17000"
+      }, {
+        "stopId": "17000",
+        "scheduleRelationship": "SKIPPED"
+      }, {
+        "stopId": "03208",
+        "scheduleRelationship": "SKIPPED"
+      }, {
+        "stopId": "60600",
+        "scheduleRelationship": "SKIPPED"
+      }, {
+        "stopId": "03309",
+        "scheduleRelationship": "SKIPPED"
+      }, {
+        "stopId": "60911",
+        "scheduleRelationship": "SKIPPED"
+      }],
+      "delay": -240
+    }
+  }, {
+    "id": "TUUPDATE_0408012026-11-04",
+    "tripUpdate": {
+      "trip": {
+        "tripId": "0408012026-11-04",
+        "scheduleRelationship": "SCHEDULED"
+      },
+      "stopTimeUpdate": [{
+        "arrival": {
+          "delay": 0,
+          "time": "1793785930"
+        },
+        "stopId": "17000"
+      }],
+      "delay": 0
+    }
+  }, {
+    "id": "TUUPDATE_0409112026-11-04",
+    "tripUpdate": {
+      "trip": {
+        "tripId": "0409112026-11-04",
+        "scheduleRelationship": "SCHEDULED"
+      },
+      "stopTimeUpdate": [{
+        "arrival": {
+          "delay": 60,
+          "time": "1793787930"
+        },
+        "stopId": "15211"
+      }],
+      "delay": 60
+    }
+  }, {
+    "id": "TUUPDATE_0411012026-11-04",
+    "tripUpdate": {
+      "trip": {
+        "tripId": "0411012026-11-04",
+        "scheduleRelationship": "SCHEDULED"
+      },
+      "stopTimeUpdate": [{
+        "arrival": {
+          "delay": 60,
+          "time": "1793785380"
+        },
+        "stopId": "15100"
+      }],
+      "delay": 60
+    }
+  }, {
+    "id": "TUUPDATE_0412112026-11-04",
+    "tripUpdate": {
+      "trip": {
+        "tripId": "0412112026-11-04",
+        "scheduleRelationship": "SCHEDULED"
+      },
+      "stopTimeUpdate": [{
+        "arrival": {
+          "delay": 720,
+          "time": "1793788660"
+        },
+        "stopId": "10600"
+      }],
+      "delay": 720
+    }
+  }, {
+    "id": "TUUPDATE_0412122026-11-04",
+    "tripUpdate": {
+      "trip": {
+        "tripId": "0412122026-11-04",
+        "scheduleRelationship": "SCHEDULED"
+      },
+      "stopTimeUpdate": [{
+        "arrival": {
+          "delay": 720,
+          "time": "1793788660"
+        },
+        "stopId": "10600"
+      }],
+      "delay": 720
+    }
+  }, {
+    "id": "TUUPDATE_0447512026-11-04",
+    "tripUpdate": {
+      "trip": {
+        "tripId": "0447512026-11-04",
+        "scheduleRelationship": "SCHEDULED"
+      },
+      "stopTimeUpdate": [{
+        "arrival": {
+          "delay": 840,
+          "time": "1793788330"
+        },
+        "stopId": "08223"
+      }],
+      "delay": 840
+    }
+  }, {
+    "id": "TUUPDATE_0447522026-11-04",
+    "tripUpdate": {
+      "trip": {
+        "tripId": "0447522026-11-04",
+        "scheduleRelationship": "SCHEDULED"
+      },
+      "stopTimeUpdate": [{
+        "arrival": {
+          "delay": 840,
+          "time": "1793788330"
+        },
+        "stopId": "08223"
+      }],
+      "delay": 840
+    }
+  }, {
+    "id": "TUUPDATE_0447532026-11-04",
+    "tripUpdate": {
+      "trip": {
+        "tripId": "0447532026-11-04",
+        "scheduleRelationship": "SCHEDULED"
+      },
+      "stopTimeUpdate": [{
+        "arrival": {
+          "delay": 840,
+          "time": "1793788330"
+        },
+        "stopId": "08223"
+      }],
+      "delay": 840
+    }
+  }, {
+    "id": "TUUPDATE_0451512026-11-04",
+    "tripUpdate": {
+      "trip": {
+        "tripId": "0451512026-11-04",
+        "scheduleRelationship": "SCHEDULED"
+      },
+      "stopTimeUpdate": [{
+        "arrival": {
+          "delay": 1020,
+          "time": "1793788920"
+        },
+        "stopId": "22100"
+      }],
+      "delay": 1020
+    }
+  }, {
+    "id": "TUUPDATE_0449412026-11-04",
+    "tripUpdate": {
+      "trip": {
+        "tripId": "0449412026-11-04",
+        "scheduleRelationship": "SCHEDULED"
+      },
+      "stopTimeUpdate": [{
+        "arrival": {
+          "delay": 540,
+          "time": "1793788560"
+        },
+        "stopId": "08247"
+      }],
+      "delay": 540
+    }
+  }, {
+    "id": "TUUPDATE_0431412026-11-04",
+    "tripUpdate": {
+      "trip": {
+        "tripId": "0431412026-11-04",
+        "scheduleRelationship": "SCHEDULED"
+      },
+      "stopTimeUpdate": [{
+        "arrival": {
+          "delay": 300,
+          "time": "1793788240"
+        },
+        "stopId": "30200"
+      }],
+      "delay": 300
+    }
+  }, {
+    "id": "TUUPDATE_0431422026-11-04",
+    "tripUpdate": {
+      "trip": {
+        "tripId": "0431422026-11-04",
+        "scheduleRelationship": "SCHEDULED"
+      },
+      "stopTimeUpdate": [{
+        "arrival": {
+          "delay": 300,
+          "time": "1793788240"
+        },
+        "stopId": "30200"
+      }],
+      "delay": 300
+    }
+  }, {
+    "id": "TUUPDATE_0510112026-11-04",
+    "tripUpdate": {
+      "trip": {
+        "tripId": "0510112026-11-04",
+        "scheduleRelationship": "SCHEDULED"
+      },
+      "stopTimeUpdate": [{
+        "arrival": {
+          "delay": 120,
+          "time": "1793785200"
+        },
+        "stopId": "03208"
+      }],
+      "delay": 120
+    }
+  }, {
+    "id": "TUUPDATE_0510122026-11-04",
+    "tripUpdate": {
+      "trip": {
+        "tripId": "0510122026-11-04",
+        "scheduleRelationship": "SCHEDULED"
+      },
+      "stopTimeUpdate": [{
+        "arrival": {
+          "delay": 120,
+          "time": "1793785200"
+        },
+        "stopId": "03208"
+      }],
+      "delay": 120
+    }
+  }, {
+    "id": "TUUPDATE_0511012026-11-04",
+    "tripUpdate": {
+      "trip": {
+        "tripId": "0511012026-11-04",
+        "scheduleRelationship": "SCHEDULED"
+      },
+      "stopTimeUpdate": [{
+        "arrival": {
+          "delay": 0,
+          "time": "1793784780"
+        },
+        "stopId": "03216"
+      }],
+      "delay": 0
+    }
+  }, {
+    "id": "TUUPDATE_0572112026-11-04",
+    "tripUpdate": {
+      "trip": {
+        "tripId": "0572112026-11-04",
+        "scheduleRelationship": "SCHEDULED"
+      },
+      "stopTimeUpdate": [{
+        "arrival": {
+          "delay": 60,
+          "time": "1793788560"
+        },
+        "stopId": "03216"
+      }],
+      "delay": 60
+    }
+  }, {
+    "id": "TUUPDATE_0512412026-11-04",
+    "tripUpdate": {
+      "trip": {
+        "tripId": "0512412026-11-04",
+        "scheduleRelationship": "SCHEDULED"
+      },
+      "stopTimeUpdate": [{
+        "arrival": {
+          "delay": 240,
+          "time": "1793788320"
+        },
+        "stopId": "03208"
+      }],
+      "delay": 240
+    }
+  }, {
+    "id": "TUUPDATE_0512422026-11-04",
+    "tripUpdate": {
+      "trip": {
+        "tripId": "0512422026-11-04",
+        "scheduleRelationship": "SCHEDULED"
+      },
+      "stopTimeUpdate": [{
+        "arrival": {
+          "delay": 240,
+          "time": "1793788320"
+        },
+        "stopId": "03208"
+      }],
+      "delay": 240
+    }
+  }, {
+    "id": "TUUPDATE_0581712026-11-04",
+    "tripUpdate": {
+      "trip": {
+        "tripId": "0581712026-11-04",
+        "scheduleRelationship": "SCHEDULED"
+      },
+      "stopTimeUpdate": [{
+        "arrival": {
+          "delay": 780,
+          "time": "1793787080"
+        },
+        "stopId": "60600"
+      }],
+      "delay": 780
+    }
+  }, {
+    "id": "TUUPDATE_0589012026-11-04",
+    "tripUpdate": {
+      "trip": {
+        "tripId": "0589012026-11-04",
+        "scheduleRelationship": "SCHEDULED"
+      },
+      "stopTimeUpdate": [{
+        "arrival": {
+          "delay": 180,
+          "time": "1793786540"
+        },
+        "stopId": "65300"
+      }],
+      "delay": 180
+    }
+  }, {
+    "id": "TUUPDATE_0589022026-11-04",
+    "tripUpdate": {
+      "trip": {
+        "tripId": "0589022026-11-04",
+        "scheduleRelationship": "SCHEDULED"
+      },
+      "stopTimeUpdate": [{
+        "arrival": {
+          "delay": 180,
+          "time": "1793786540"
+        },
+        "stopId": "65300"
+      }],
+      "delay": 180
+    }
+  }, {
+    "id": "TUUPDATE_0589032026-11-04",
+    "tripUpdate": {
+      "trip": {
+        "tripId": "0589032026-11-04",
+        "scheduleRelationship": "SCHEDULED"
+      },
+      "stopTimeUpdate": [{
+        "arrival": {
+          "delay": 180,
+          "time": "1793786540"
+        },
+        "stopId": "65300"
+      }],
+      "delay": 180
+    }
+  }, {
+    "id": "TUUPDATE_0591212026-11-04",
+    "tripUpdate": {
+      "trip": {
+        "tripId": "0591212026-11-04",
+        "scheduleRelationship": "SCHEDULED"
+      },
+      "stopTimeUpdate": [{
+        "arrival": {
+          "delay": 120,
+          "time": "1793788790"
+        },
+        "stopId": "03309"
+      }],
+      "delay": 120
+    }
+  }, {
+    "id": "TUUPDATE_0591222026-11-04",
+    "tripUpdate": {
+      "trip": {
+        "tripId": "0591222026-11-04",
+        "scheduleRelationship": "SCHEDULED"
+      },
+      "stopTimeUpdate": [{
+        "arrival": {
+          "delay": 120,
+          "time": "1793788790"
+        },
+        "stopId": "03309"
+      }],
+      "delay": 120
+    }
+  }, {
+    "id": "TUUPDATE_0596212026-11-04",
+    "tripUpdate": {
+      "trip": {
+        "tripId": "0596212026-11-04",
+        "scheduleRelationship": "SCHEDULED"
+      },
+      "stopTimeUpdate": [{
+        "arrival": {
+          "delay": -60,
+          "time": "1793788310"
+        },
+        "stopId": "61200"
+      }],
+      "delay": -60
+    }
+  }, {
+    "id": "TUUPDATE_0812312026-11-03",
+    "tripUpdate": {
+      "trip": {
+        "tripId": "0812312026-11-03",
+        "scheduleRelationship": "SCHEDULED"
+      },
+      "stopTimeUpdate": [{
+        "arrival": {
+          "delay": 240,
+          "time": "1793787960"
+        },
+        "stopId": "60000"
+      }],
+      "delay": 240
+    }
+  }, {
+    "id": "TUUPDATE_0812912026-11-04",
+    "tripUpdate": {
+      "trip": {
+        "tripId": "0812912026-11-04",
+        "scheduleRelationship": "SCHEDULED"
+      },
+      "stopTimeUpdate": [{
+        "arrival": {
+          "delay": 240,
+          "time": "1793788620"
+        },
+        "stopId": "08004"
+      }],
+      "delay": 240
+    }
+  }, {
+    "id": "TUUPDATE_0829512026-11-04",
+    "tripUpdate": {
+      "trip": {
+        "tripId": "0829512026-11-04",
+        "scheduleRelationship": "SCHEDULED"
+      },
+      "stopTimeUpdate": [{
+        "arrival": {
+          "delay": -60,
+          "time": "1793787170"
+        },
+        "stopId": "05000"
+      }],
+      "delay": -60
+    }
+  }, {
+    "id": "TUUPDATE_0832212026-11-04",
+    "tripUpdate": {
+      "trip": {
+        "tripId": "0832212026-11-04",
+        "scheduleRelationship": "SCHEDULED"
+      },
+      "stopTimeUpdate": [{
+        "arrival": {
+          "delay": -180,
+          "time": "1793787360"
+        },
+        "stopId": "92102"
+      }],
+      "delay": -180
+    }
+  }, {
+    "id": "TUUPDATE_0833512026-11-04",
+    "tripUpdate": {
+      "trip": {
+        "tripId": "0833512026-11-04",
+        "scheduleRelationship": "SCHEDULED"
+      },
+      "stopTimeUpdate": [{
+        "arrival": {
+          "delay": 180,
+          "time": "1793787660"
+        },
+        "stopId": "50500"
+      }],
+      "delay": 180
+    }
+  }, {
+    "id": "TUUPDATE_0911312026-11-03",
+    "tripUpdate": {
+      "trip": {
+        "tripId": "0911312026-11-03",
+        "scheduleRelationship": "SCHEDULED"
+      },
+      "stopTimeUpdate": [{
+        "arrival": {
+          "delay": 360,
+          "time": "1793788390"
+        },
+        "stopId": "23008"
+      }],
+      "delay": 360
+    }
+  }, {
+    "id": "TUUPDATE_0973012026-11-04",
+    "tripUpdate": {
+      "trip": {
+        "tripId": "0973012026-11-04",
+        "scheduleRelationship": "SCHEDULED"
+      },
+      "stopTimeUpdate": [{
+        "arrival": {
+          "delay": 180,
+          "time": "1793789580"
+        },
+        "stopId": "71801"
+      }],
+      "delay": 180
+    }
+  }, {
+    "id": "TUUPDATE_0973022026-11-04",
+    "tripUpdate": {
+      "trip": {
+        "tripId": "0973022026-11-04",
+        "scheduleRelationship": "SCHEDULED"
+      },
+      "stopTimeUpdate": [{
+        "arrival": {
+          "delay": 180,
+          "time": "1793789580"
+        },
+        "stopId": "71801"
+      }],
+      "delay": 180
+    }
+  }, {
+    "id": "TUUPDATE_0973032026-11-04",
+    "tripUpdate": {
+      "trip": {
+        "tripId": "0973032026-11-04",
+        "scheduleRelationship": "SCHEDULED"
+      },
+      "stopTimeUpdate": [{
+        "arrival": {
+          "delay": 180,
+          "time": "1793789580"
+        },
+        "stopId": "71801"
+      }],
+      "delay": 180
+    }
+  }, {
+    "id": "TUUPDATE_0973712026-11-04",
+    "tripUpdate": {
+      "trip": {
+        "tripId": "0973712026-11-04",
+        "scheduleRelationship": "SCHEDULED"
+      },
+      "stopTimeUpdate": [{
+        "arrival": {
+          "delay": 0,
+          "time": "1793784540"
+        },
+        "stopId": "87173"
+      }],
+      "delay": 0
+    }
+  }, {
+    "id": "TUUPDATE_0973722026-11-04",
+    "tripUpdate": {
+      "trip": {
+        "tripId": "0973722026-11-04",
+        "scheduleRelationship": "SCHEDULED"
+      },
+      "stopTimeUpdate": [{
+        "arrival": {
+          "delay": 0,
+          "time": "1793784540"
+        },
+        "stopId": "87173"
+      }],
+      "delay": 0
+    }
+  }, {
+    "id": "TUUPDATE_0063112026-11-04",
+    "tripUpdate": {
+      "trip": {
+        "tripId": "0063112026-11-04",
+        "scheduleRelationship": "SCHEDULED"
+      },
+      "stopTimeUpdate": [{
+        "arrival": {
+          "delay": 1440,
+          "time": "1793787770"
+        },
+        "stopId": "81202"
+      }],
+      "delay": 1440
+    }
+  }, {
+    "id": "TUUPDATE_0063122026-11-04",
+    "tripUpdate": {
+      "trip": {
+        "tripId": "0063122026-11-04",
+        "scheduleRelationship": "SCHEDULED"
+      },
+      "stopTimeUpdate": [{
+        "arrival": {
+          "delay": 1440,
+          "time": "1793787770"
+        },
+        "stopId": "81202"
+      }],
+      "delay": 1440
+    }
+  }, {
+    "id": "TUUPDATE_0063132026-11-04",
+    "tripUpdate": {
+      "trip": {
+        "tripId": "0063132026-11-04",
+        "scheduleRelationship": "SCHEDULED"
+      },
+      "stopTimeUpdate": [{
+        "arrival": {
+          "delay": 1440,
+          "time": "1793787770"
+        },
+        "stopId": "81202"
+      }],
+      "delay": 1440
+    }
+  }, {
+    "id": "TUUPDATE_0063142026-11-04",
+    "tripUpdate": {
+      "trip": {
+        "tripId": "0063142026-11-04",
+        "scheduleRelationship": "SCHEDULED"
+      },
+      "stopTimeUpdate": [{
+        "arrival": {
+          "delay": 1440,
+          "time": "1793787770"
+        },
+        "stopId": "81202"
+      }],
+      "delay": 1440
+    }
+  }, {
+    "id": "TUUPDATE_0408612026-11-04",
+    "tripUpdate": {
+      "trip": {
+        "tripId": "0408612026-11-04",
+        "scheduleRelationship": "SCHEDULED"
+      },
+      "stopTimeUpdate": [{
+        "arrival": {
+          "delay": 4920,
+          "time": "1793787060"
+        },
+        "stopId": "10600"
+      }],
+      "delay": 4920
+    }
+  }, {
+    "id": "TUUPDATE_0069712026-11-04",
+    "tripUpdate": {
+      "trip": {
+        "tripId": "0069712026-11-04",
+        "scheduleRelationship": "SCHEDULED"
+      },
+      "stopTimeUpdate": [{
+        "arrival": {
+          "delay": 180,
+          "time": "1793788500"
+        },
+        "stopId": "60600"
+      }],
+      "delay": 180
+    }
+  }, {
+    "id": "TUUPDATE_0468712026-11-04",
+    "tripUpdate": {
+      "trip": {
+        "tripId": "0468712026-11-04",
+        "scheduleRelationship": "SCHEDULED"
+      },
+      "stopTimeUpdate": [{
+        "arrival": {
+          "delay": -120,
+          "time": "1793786820"
+        },
+        "stopId": "81100"
+      }],
+      "delay": -120
+    }
+  }, {
+    "id": "TUUPDATE_1252812026-11-03",
+    "tripUpdate": {
+      "trip": {
+        "tripId": "1252812026-11-03",
+        "scheduleRelationship": "SCHEDULED"
+      },
+      "stopTimeUpdate": [{
+        "arrival": {
+          "delay": 0,
+          "time": "1793788260"
+        },
+        "stopId": "22300"
+      }],
+      "delay": 0
+    }
+  }, {
+    "id": "TUUPDATE_1261412026-11-03",
+    "tripUpdate": {
+      "trip": {
+        "tripId": "1261412026-11-03",
+        "scheduleRelationship": "SCHEDULED"
+      },
+      "stopTimeUpdate": [{
+        "arrival": {
+          "delay": 240,
+          "time": "1793788700"
+        },
+        "stopId": "20216"
+      }],
+      "delay": 240
+    }
+  }, {
+    "id": "TUUPDATE_1260112026-11-04",
+    "tripUpdate": {
+      "trip": {
+        "tripId": "1260112026-11-04",
+        "scheduleRelationship": "SCHEDULED"
+      },
+      "stopTimeUpdate": [{
+        "arrival": {
+          "delay": 180,
+          "time": "1793788500"
+        },
+        "stopId": "20002"
+      }],
+      "delay": 180
+    }
+  }, {
+    "id": "TUUPDATE_1307912026-11-03",
+    "tripUpdate": {
+      "trip": {
+        "tripId": "1307912026-11-03",
+        "scheduleRelationship": "SCHEDULED"
+      },
+      "stopTimeUpdate": [{
+        "arrival": {
+          "delay": 1500,
+          "time": "1793788740"
+        },
+        "stopId": "51400"
+      }],
+      "delay": 1500
+    }
+  }, {
+    "id": "TUUPDATE_1300912026-11-03",
+    "tripUpdate": {
+      "trip": {
+        "tripId": "1300912026-11-03",
+        "scheduleRelationship": "SCHEDULED"
+      },
+      "stopTimeUpdate": [{
+        "arrival": {
+          "delay": 240,
+          "time": "1793788080"
+        },
+        "stopId": "51100"
+      }],
+      "delay": 240
+    }
+  }, {
+    "id": "TUUPDATE_1321112026-11-03",
+    "tripUpdate": {
+      "trip": {
+        "tripId": "1321112026-11-03",
+        "scheduleRelationship": "SCHEDULED"
+      },
+      "stopTimeUpdate": [{
+        "arrival": {
+          "delay": 0,
+          "time": "1793788620"
+        },
+        "stopId": "50417"
+      }],
+      "delay": 0
+    }
+  }, {
+    "id": "TUUPDATE_1321612026-11-03",
+    "tripUpdate": {
+      "trip": {
+        "tripId": "1321612026-11-03",
+        "scheduleRelationship": "SCHEDULED"
+      },
+      "stopTimeUpdate": [{
+        "arrival": {
+          "delay": 120,
+          "time": "1793788740"
+        },
+        "stopId": "50502"
+      }],
+      "delay": 120
+    }
+  }, {
+    "id": "TUUPDATE_1390412026-11-03",
+    "tripUpdate": {
+      "trip": {
+        "tripId": "1390412026-11-03",
+        "scheduleRelationship": "SCHEDULED"
+      },
+      "stopTimeUpdate": [{
+        "arrival": {
+          "delay": 1500,
+          "time": "1793788860"
+        },
+        "stopId": "02003"
+      }],
+      "delay": 1500
+    }
+  }, {
+    "id": "TUUPDATE_1390312026-11-03",
+    "tripUpdate": {
+      "trip": {
+        "tripId": "1390312026-11-03",
+        "scheduleRelationship": "SCHEDULED"
+      },
+      "stopTimeUpdate": [{
+        "arrival": {
+          "delay": 1920,
+          "time": "1793787000"
+        },
+        "stopId": "51103"
+      }],
+      "delay": 1920
+    }
+  }, {
+    "id": "TUUPDATE_1451412026-11-04",
+    "tripUpdate": {
+      "trip": {
+        "tripId": "1451412026-11-04",
+        "scheduleRelationship": "SCHEDULED"
+      },
+      "stopTimeUpdate": [{
+        "arrival": {
+          "delay": 240,
+          "time": "1793786700"
+        },
+        "stopId": "61303"
+      }],
+      "delay": 240
+    }
+  }, {
+    "id": "TUUPDATE_1500712026-11-04",
+    "tripUpdate": {
+      "trip": {
+        "tripId": "1500712026-11-04",
+        "scheduleRelationship": "SCHEDULED"
+      },
+      "stopTimeUpdate": [{
+        "arrival": {
+          "delay": 660,
+          "time": "1793788410"
+        },
+        "stopId": "71400"
+      }],
+      "delay": 660
+    }
+  }, {
+    "id": "TUUPDATE_1505312026-11-04",
+    "tripUpdate": {
+      "trip": {
+        "tripId": "1505312026-11-04",
+        "scheduleRelationship": "SCHEDULED"
+      },
+      "stopTimeUpdate": [{
+        "arrival": {
+          "delay": 420,
+          "time": "1793786940"
+        },
+        "stopId": "71600"
+      }],
+      "delay": 420
+    }
+  }, {
+    "id": "TUUPDATE_1506012026-11-04",
+    "tripUpdate": {
+      "trip": {
+        "tripId": "1506012026-11-04",
+        "scheduleRelationship": "SCHEDULED"
+      },
+      "stopTimeUpdate": [{
+        "arrival": {
+          "delay": 1020,
+          "time": "1793787420"
+        },
+        "stopId": "71801"
+      }],
+      "delay": 1020
+    }
+  }, {
+    "id": "TUUPDATE_1506512026-11-03",
+    "tripUpdate": {
+      "trip": {
+        "tripId": "1506512026-11-03",
+        "scheduleRelationship": "SCHEDULED"
+      },
+      "stopTimeUpdate": [{
+        "arrival": {
+          "delay": 60,
+          "time": "1793788440"
+        },
+        "stopId": "71700"
+      }],
+      "delay": 60
+    }
+  }, {
+    "id": "TUUPDATE_1580612026-11-03",
+    "tripUpdate": {
+      "trip": {
+        "tripId": "1580612026-11-03",
+        "scheduleRelationship": "SCHEDULED"
+      },
+      "stopTimeUpdate": [{
+        "arrival": {
+          "delay": 1020,
+          "time": "1793787840"
+        },
+        "stopId": "79309"
+      }],
+      "delay": 1020
+    }
+  }, {
+    "id": "TUUPDATE_1580822026-11-03",
+    "tripUpdate": {
+      "trip": {
+        "tripId": "1580822026-11-03",
+        "scheduleRelationship": "SCHEDULED"
+      },
+      "stopTimeUpdate": [{
+        "arrival": {
+          "delay": 720,
+          "time": "1793786820"
+        },
+        "stopId": "79104"
+      }],
+      "delay": 720
+    }
+  }, {
+    "id": "TUUPDATE_1586012026-11-03",
+    "tripUpdate": {
+      "trip": {
+        "tripId": "1586012026-11-03",
+        "scheduleRelationship": "SCHEDULED"
+      },
+      "stopTimeUpdate": [{
+        "arrival": {
+          "delay": 480,
+          "time": "1793788710"
+        },
+        "stopId": "79202"
+      }],
+      "delay": 480
+    }
+  }, {
+    "id": "TUUPDATE_1586212026-11-03",
+    "tripUpdate": {
+      "trip": {
+        "tripId": "1586212026-11-03",
+        "scheduleRelationship": "SCHEDULED"
+      },
+      "stopTimeUpdate": [{
+        "arrival": {
+          "delay": -3660,
+          "time": "1793786550"
+        },
+        "stopId": "79308"
+      }],
+      "delay": -3660
+    }
+  }, {
+    "id": "TUUPDATE_1590812026-11-03",
+    "tripUpdate": {
+      "trip": {
+        "tripId": "1590812026-11-03",
+        "scheduleRelationship": "SCHEDULED"
+      },
+      "stopTimeUpdate": [{
+        "arrival": {
+          "delay": 120,
+          "time": "1793786760"
+        },
+        "stopId": "79316"
+      }],
+      "delay": 120
+    }
+  }, {
+    "id": "TUUPDATE_1591212026-11-03",
+    "tripUpdate": {
+      "trip": {
+        "tripId": "1591212026-11-03",
+        "scheduleRelationship": "SCHEDULED"
+      },
+      "stopTimeUpdate": [{
+        "arrival": {
+          "delay": 0,
+          "time": "1793788380"
+        },
+        "stopId": "79204"
+      }],
+      "delay": 0
+    }
+  }, {
+    "id": "TUUPDATE_1602312026-11-04",
+    "tripUpdate": {
+      "trip": {
+        "tripId": "1602312026-11-04",
+        "scheduleRelationship": "SCHEDULED"
+      },
+      "stopTimeUpdate": [{
+        "arrival": {
+          "delay": 420,
+          "time": "1793788680"
+        },
+        "stopId": "11208"
+      }],
+      "delay": 420
+    }
+  }, {
+    "id": "TUUPDATE_1780112026-11-04",
+    "tripUpdate": {
+      "trip": {
+        "tripId": "1780112026-11-04",
+        "scheduleRelationship": "SCHEDULED"
+      },
+      "stopTimeUpdate": [{
+        "arrival": {
+          "delay": 360,
+          "time": "1793788540"
+        },
+        "stopId": "37611"
+      }],
+      "delay": 360
+    }
+  }, {
+    "id": "TUUPDATE_1790212026-11-04",
+    "tripUpdate": {
+      "trip": {
+        "tripId": "1790212026-11-04",
+        "scheduleRelationship": "SCHEDULED"
+      },
+      "stopTimeUpdate": [{
+        "arrival": {
+          "delay": -60,
+          "time": "1793788090"
+        },
+        "stopId": "35203"
+      }],
+      "delay": -60
+    }
+  }, {
+    "id": "TUUPDATE_1801012026-11-03",
+    "tripUpdate": {
+      "trip": {
+        "tripId": "1801012026-11-03",
+        "scheduleRelationship": "SCHEDULED"
+      },
+      "stopTimeUpdate": [{
+        "arrival": {
+          "delay": 2520,
+          "time": "1793788620"
+        },
+        "stopId": "10400"
+      }],
+      "delay": 2520
+    }
+  }, {
+    "id": "TUUPDATE_1801212026-11-03",
+    "tripUpdate": {
+      "trip": {
+        "tripId": "1801212026-11-03",
+        "scheduleRelationship": "SCHEDULED"
+      },
+      "stopTimeUpdate": [{
+        "arrival": {
+          "delay": 120,
+          "time": "1793788740"
+        },
+        "stopId": "11300"
+      }],
+      "delay": 120
+    }
+  }, {
+    "id": "TUUPDATE_1806112026-11-03",
+    "tripUpdate": {
+      "trip": {
+        "tripId": "1806112026-11-03",
+        "scheduleRelationship": "SCHEDULED"
+      },
+      "stopTimeUpdate": [{
+        "arrival": {
+          "delay": 1380,
+          "time": "1793788680"
+        },
+        "stopId": "11000"
+      }],
+      "delay": 1380
+    }
+  }, {
+    "id": "TUUPDATE_1808112026-11-04",
+    "tripUpdate": {
+      "trip": {
+        "tripId": "1808112026-11-04",
+        "scheduleRelationship": "SCHEDULED"
+      },
+      "stopTimeUpdate": [{
+        "arrival": {
+          "delay": 120,
+          "time": "1793787820"
+        },
+        "stopId": "60800"
+      }],
+      "delay": 120
+    }
+  }, {
+    "id": "TUUPDATE_1808122026-11-04",
+    "tripUpdate": {
+      "trip": {
+        "tripId": "1808122026-11-04",
+        "scheduleRelationship": "SCHEDULED"
+      },
+      "stopTimeUpdate": [{
+        "arrival": {
+          "delay": 120,
+          "time": "1793787820"
+        },
+        "stopId": "60800"
+      }],
+      "delay": 120
+    }
+  }, {
+    "id": "TUUPDATE_1809312026-11-03",
+    "tripUpdate": {
+      "trip": {
+        "tripId": "1809312026-11-03",
+        "scheduleRelationship": "SCHEDULED"
+      },
+      "stopTimeUpdate": [{
+        "arrival": {
+          "delay": 240,
+          "time": "1793789160"
+        },
+        "stopId": "65402"
+      }],
+      "delay": 240
+    }
+  }, {
+    "id": "TUUPDATE_1810112026-11-03",
+    "tripUpdate": {
+      "trip": {
+        "tripId": "1810112026-11-03",
+        "scheduleRelationship": "SCHEDULED"
+      },
+      "stopTimeUpdate": [{
+        "arrival": {
+          "delay": 1140,
+          "time": "1793788620"
+        },
+        "stopId": "14202"
+      }],
+      "delay": 1140
+    }
+  }, {
+    "id": "TUUPDATE_1810212026-11-03",
+    "tripUpdate": {
+      "trip": {
+        "tripId": "1810212026-11-03",
+        "scheduleRelationship": "SCHEDULED"
+      },
+      "stopTimeUpdate": [{
+        "arrival": {
+          "delay": 900,
+          "time": "1793787840"
+        },
+        "stopId": "14104"
+      }],
+      "delay": 900
+    }
+  }, {
+    "id": "TUUPDATE_1812412026-11-04",
+    "tripUpdate": {
+      "trip": {
+        "tripId": "1812412026-11-04",
+        "scheduleRelationship": "SCHEDULED"
+      },
+      "stopTimeUpdate": [{
+        "arrival": {
+          "delay": 60,
+          "time": "1793788020"
+        },
+        "stopId": "71500"
+      }],
+      "delay": 60
+    }
+  }, {
+    "id": "TUUPDATE_1812512026-11-04",
+    "tripUpdate": {
+      "trip": {
+        "tripId": "1812512026-11-04",
+        "scheduleRelationship": "SCHEDULED"
+      },
+      "stopTimeUpdate": [{
+        "arrival": {
+          "delay": 600,
+          "time": "1793788740"
+        },
+        "stopId": "71503"
+      }],
+      "delay": 600
+    }
+  }, {
+    "id": "TUUPDATE_1818312026-11-04",
+    "tripUpdate": {
+      "trip": {
+        "tripId": "1818312026-11-04",
+        "scheduleRelationship": "SCHEDULED"
+      },
+      "stopTimeUpdate": [{
+        "arrival": {
+          "delay": 480,
+          "time": "1793788650"
+        },
+        "stopId": "60500"
+      }],
+      "delay": 480
+    }
+  }, {
+    "id": "TUUPDATE_1818322026-11-04",
+    "tripUpdate": {
+      "trip": {
+        "tripId": "1818322026-11-04",
+        "scheduleRelationship": "SCHEDULED"
+      },
+      "stopTimeUpdate": [{
+        "arrival": {
+          "delay": 480,
+          "time": "1793788650"
+        },
+        "stopId": "60500"
+      }],
+      "delay": 480
+    }
+  }, {
+    "id": "TUUPDATE_1821112026-11-03",
+    "tripUpdate": {
+      "trip": {
+        "tripId": "1821112026-11-03",
+        "scheduleRelationship": "SCHEDULED"
+      },
+      "stopTimeUpdate": [{
+        "arrival": {
+          "delay": -60,
+          "time": "1793788770"
+        },
+        "stopId": "10603"
+      }],
+      "delay": -60
+    }
+  }, {
+    "id": "TUUPDATE_1830212026-11-04",
+    "tripUpdate": {
+      "trip": {
+        "tripId": "1830212026-11-04",
+        "scheduleRelationship": "SCHEDULED"
+      },
+      "stopTimeUpdate": [{
+        "arrival": {
+          "delay": 0,
+          "time": "1793788200"
+        },
+        "stopId": "10500"
+      }],
+      "delay": 0
+    }
+  }, {
+    "id": "TUUPDATE_1877012026-11-04",
+    "tripUpdate": {
+      "trip": {
+        "tripId": "1877012026-11-04",
+        "scheduleRelationship": "SCHEDULED"
+      },
+      "stopTimeUpdate": [{
+        "arrival": {
+          "delay": 60,
+          "time": "1793788750"
+        },
+        "stopId": "37305"
+      }],
+      "delay": 60
+    }
+  }, {
+    "id": "TUUPDATE_1890312026-11-04",
+    "tripUpdate": {
+      "trip": {
+        "tripId": "1890312026-11-04",
+        "scheduleRelationship": "SCHEDULED"
+      },
+      "stopTimeUpdate": [{
+        "arrival": {
+          "delay": 720,
+          "time": "1793786340"
+        },
+        "stopId": "10400"
+      }],
+      "delay": 720
+    }
+  }, {
+    "id": "TUUPDATE_1890212026-11-04",
+    "tripUpdate": {
+      "trip": {
+        "tripId": "1890212026-11-04",
+        "scheduleRelationship": "SCHEDULED"
+      },
+      "stopTimeUpdate": [{
+        "arrival": {
+          "delay": 60,
+          "time": "1793788080"
+        },
+        "stopId": "34010"
+      }],
+      "delay": 60
+    }
+  }, {
+    "id": "TUUPDATE_1891212026-11-04",
+    "tripUpdate": {
+      "trip": {
+        "tripId": "1891212026-11-04",
+        "scheduleRelationship": "SCHEDULED"
+      },
+      "stopTimeUpdate": [{
+        "arrival": {
+          "delay": 1020,
+          "time": "1793787550"
+        },
+        "stopId": "10000"
+      }],
+      "delay": 1020
+    }
+  }, {
+    "id": "TUUPDATE_1446112026-11-03",
+    "tripUpdate": {
+      "trip": {
+        "tripId": "1446112026-11-03",
+        "scheduleRelationship": "SCHEDULED"
+      },
+      "stopTimeUpdate": [{
+        "arrival": {
+          "delay": -60,
+          "time": "1793788770"
+        },
+        "stopId": "65306"
+      }],
+      "delay": -60
+    }
+  }, {
+    "id": "TUUPDATE_1750112026-11-03",
+    "tripUpdate": {
+      "trip": {
+        "tripId": "1750112026-11-03",
+        "scheduleRelationship": "SCHEDULED"
+      },
+      "stopTimeUpdate": [{
+        "arrival": {
+          "delay": 120,
+          "time": "1793788470"
+        },
+        "stopId": "71207"
+      }],
+      "delay": 120
+    }
+  }, {
+    "id": "TUUPDATE_1503212026-11-03",
+    "tripUpdate": {
+      "trip": {
+        "tripId": "1503212026-11-03",
+        "scheduleRelationship": "SCHEDULED"
+      },
+      "stopTimeUpdate": [{
+        "arrival": {
+          "delay": 2460,
+          "time": "1793787120"
+        },
+        "stopId": "71801"
+      }],
+      "delay": 2460
+    }
+  }, {
+    "id": "TUUPDATE_1503612026-11-04",
+    "tripUpdate": {
+      "trip": {
+        "tripId": "1503612026-11-04",
+        "scheduleRelationship": "SCHEDULED"
+      },
+      "stopTimeUpdate": [{
+        "arrival": {
+          "delay": 600,
+          "time": "1793788200"
+        },
+        "stopId": "71700"
+      }],
+      "delay": 600
+    }
+  }, {
+    "id": "TUUPDATE_1504212026-11-04",
+    "tripUpdate": {
+      "trip": {
+        "tripId": "1504212026-11-04",
+        "scheduleRelationship": "SCHEDULED"
+      },
+      "stopTimeUpdate": [{
+        "arrival": {
+          "delay": 4320,
+          "time": "1793786340"
+        },
+        "stopId": "71802"
+      }],
+      "delay": 4320
+    }
+  }, {
+    "id": "TUUPDATE_1705012026-11-03",
+    "tripUpdate": {
+      "trip": {
+        "tripId": "1705012026-11-03",
+        "scheduleRelationship": "SCHEDULED"
+      },
+      "stopTimeUpdate": [{
+        "arrival": {
+          "delay": 300,
+          "time": "1793788530"
+        },
+        "stopId": "71108"
+      }],
+      "delay": 300
+    }
+  }, {
+    "id": "TUUPDATE_1447312026-11-03",
+    "tripUpdate": {
+      "trip": {
+        "tripId": "1447312026-11-03",
+        "scheduleRelationship": "SCHEDULED"
+      },
+      "stopTimeUpdate": [{
+        "arrival": {
+          "delay": 60,
+          "time": "1793788750"
+        },
+        "stopId": "60902"
+      }],
+      "delay": 60
+    }
+  }, {
+    "id": "TUUPDATE_1803312026-11-03",
+    "tripUpdate": {
+      "trip": {
+        "tripId": "1803312026-11-03",
+        "scheduleRelationship": "SCHEDULED"
+      },
+      "stopTimeUpdate": [{
+        "arrival": {
+          "delay": 1980,
+          "time": "1793787060"
+        },
+        "stopId": "18000"
+      }],
+      "delay": 1980
+    }
+  }, {
+    "id": "TUUPDATE_1803322026-11-03",
+    "tripUpdate": {
+      "trip": {
+        "tripId": "1803322026-11-03",
+        "scheduleRelationship": "SCHEDULED"
+      },
+      "stopTimeUpdate": [{
+        "arrival": {
+          "delay": 1980,
+          "time": "1793787060"
+        },
+        "stopId": "18000"
+      }],
+      "delay": 1980
+    }
+  }, {
+    "id": "TUUPDATE_1803332026-11-03",
+    "tripUpdate": {
+      "trip": {
+        "tripId": "1803332026-11-03",
+        "scheduleRelationship": "SCHEDULED"
+      },
+      "stopTimeUpdate": [{
+        "arrival": {
+          "delay": 1980,
+          "time": "1793787060"
+        },
+        "stopId": "18000"
+      }],
+      "delay": 1980
+    }
+  }, {
+    "id": "TUUPDATE_1803342026-11-03",
+    "tripUpdate": {
+      "trip": {
+        "tripId": "1803342026-11-03",
+        "scheduleRelationship": "SCHEDULED"
+      },
+      "stopTimeUpdate": [{
+        "arrival": {
+          "delay": 1980,
+          "time": "1793787060"
+        },
+        "stopId": "18000"
+      }],
+      "delay": 1980
+    }
+  }, {
+    "id": "TUUPDATE_1806312026-11-03",
+    "tripUpdate": {
+      "trip": {
+        "tripId": "1806312026-11-03",
+        "scheduleRelationship": "SCHEDULED"
+      },
+      "stopTimeUpdate": [{
+        "arrival": {
+          "delay": 120,
+          "time": "1793787900"
+        },
+        "stopId": "10200"
+      }],
+      "delay": 120
+    }
+  }, {
+    "id": "TUUPDATE_1394012026-11-04",
+    "tripUpdate": {
+      "trip": {
+        "tripId": "1394012026-11-04",
+        "scheduleRelationship": "SCHEDULED"
+      },
+      "stopTimeUpdate": [{
+        "arrival": {
+          "delay": 60,
+          "time": "1793786760"
+        },
+        "stopId": "56310"
+      }],
+      "delay": 60
+    }
+  }, {
+    "id": "TUUPDATE_1562412026-11-04",
+    "tripUpdate": {
+      "trip": {
+        "tripId": "1562412026-11-04",
+        "scheduleRelationship": "SCHEDULED"
+      },
+      "stopTimeUpdate": [{
+        "arrival": {
+          "delay": 600,
+          "time": "1793788320"
+        },
+        "stopId": "78406"
+      }],
+      "delay": 600
+    }
+  }, {
+    "id": "TUUPDATE_1563512026-11-03",
+    "tripUpdate": {
+      "trip": {
+        "tripId": "1563512026-11-03",
+        "scheduleRelationship": "SCHEDULED"
+      },
+      "stopTimeUpdate": [{
+        "arrival": {
+          "delay": 0,
+          "time": "1793788320"
+        },
+        "stopId": "78408"
+      }],
+      "delay": 0
+    }
+  }, {
+    "id": "TUUPDATE_7180112026-11-04",
+    "tripUpdate": {
+      "trip": {
+        "tripId": "7180112026-11-04",
+        "scheduleRelationship": "SCHEDULED"
+      },
+      "stopTimeUpdate": [{
+        "arrival": {
+          "delay": 540,
+          "time": "1793787180"
+        },
+        "stopId": "05139"
+      }],
+      "delay": 540
+    }
+  }, {
+    "id": "TUUPDATE_7181112026-11-04",
+    "tripUpdate": {
+      "trip": {
+        "tripId": "7181112026-11-04",
+        "scheduleRelationship": "SCHEDULED"
+      },
+      "stopTimeUpdate": [{
+        "arrival": {
+          "delay": 960,
+          "time": "1793785560"
+        },
+        "stopId": "05193"
+      }],
+      "delay": 960
+    }
+  }, {
+    "id": "TUUPDATE_7183012026-11-04",
+    "tripUpdate": {
+      "trip": {
+        "tripId": "7183012026-11-04",
+        "scheduleRelationship": "SCHEDULED"
+      },
+      "stopTimeUpdate": [{
+        "arrival": {
+          "delay": 660,
+          "time": "1793785500"
+        },
+        "stopId": "05193"
+      }],
+      "delay": 660
+    }
+  }, {
+    "id": "TUUPDATE_7185012026-11-04",
+    "tripUpdate": {
+      "trip": {
+        "tripId": "7185012026-11-04",
+        "scheduleRelationship": "SCHEDULED"
+      },
+      "stopTimeUpdate": [{
+        "arrival": {
+          "delay": 1140,
+          "time": "1793787960"
+        },
+        "stopId": "05543"
+      }],
+      "delay": 1140
+    }
+  }, {
+    "id": "TUADDED_SPECIAL_9551520261104",
+    "tripUpdate": {
+      "trip": {
+        "tripId": "SPECIAL_9551520261104",
+        "scheduleRelationship": "ADDED"
+      },
+      "stopTimeUpdate": [{
+        "stopSequence": 1,
+        "arrival": {
+          "time": "1793782800"
+        },
+        "departure": {
+          "time": "1793782800"
+        },
+        "stopId": "79004"
+      }, {
+        "stopSequence": 3,
+        "arrival": {
+          "time": "1793783220"
+        },
+        "departure": {
+          "time": "1793783220"
+        },
+        "stopId": "78800"
+      }]
+    }
+  }, {
+    "id": "TUCANCEL_0029112026-11-04",
+    "tripUpdate": {
+      "trip": {
+        "tripId": "0029112026-11-04",
+        "scheduleRelationship": "CANCELED"
+      }
+    }
+  }, {
+    "id": "TUCANCEL_0029122026-11-04",
+    "tripUpdate": {
+      "trip": {
+        "tripId": "0029122026-11-04",
+        "scheduleRelationship": "CANCELED"
+      }
+    }
+  }, {
+    "id": "TUCANCEL_0029112026-11-04",
+    "tripUpdate": {
+      "trip": {
+        "tripId": "0029112026-11-04",
+        "scheduleRelationship": "CANCELED"
+      }
+    }
+  }, {
+    "id": "TUCANCEL_0029122026-11-04",
+    "tripUpdate": {
+      "trip": {
+        "tripId": "0029122026-11-04",
+        "scheduleRelationship": "CANCELED"
+      }
+    }
+  }, {
+    "id": "TUCANCEL_3709112026-11-04",
+    "tripUpdate": {
+      "trip": {
+        "tripId": "3709112026-11-04",
+        "scheduleRelationship": "CANCELED"
+      }
+    }
+  }, {
+    "id": "TUCANCEL_3709122026-11-04",
+    "tripUpdate": {
+      "trip": {
+        "tripId": "3709122026-11-04",
+        "scheduleRelationship": "CANCELED"
+      }
+    }
+  }, {
+    "id": "TUCANCEL_3709112026-11-04",
+    "tripUpdate": {
+      "trip": {
+        "tripId": "3709112026-11-04",
+        "scheduleRelationship": "CANCELED"
+      }
+    }
+  }, {
+    "id": "TUCANCEL_3709122026-11-04",
+    "tripUpdate": {
+      "trip": {
+        "tripId": "3709122026-11-04",
+        "scheduleRelationship": "CANCELED"
+      }
+    }
+  }, {
+    "id": "TUCANCEL_3739112026-11-04",
+    "tripUpdate": {
+      "trip": {
+        "tripId": "3739112026-11-04",
+        "scheduleRelationship": "CANCELED"
+      }
+    }
+  }, {
+    "id": "TUCANCEL_3739112026-11-04",
+    "tripUpdate": {
+      "trip": {
+        "tripId": "3739112026-11-04",
+        "scheduleRelationship": "CANCELED"
+      }
+    }
+  }, {
+    "id": "TUCANCEL_0062112026-11-04",
+    "tripUpdate": {
+      "trip": {
+        "tripId": "0062112026-11-04",
+        "scheduleRelationship": "CANCELED"
+      }
+    }
+  }, {
+    "id": "TUCANCEL_0062122026-11-04",
+    "tripUpdate": {
+      "trip": {
+        "tripId": "0062122026-11-04",
+        "scheduleRelationship": "CANCELED"
+      }
+    }
+  }, {
+    "id": "TUCANCEL_0062132026-11-04",
+    "tripUpdate": {
+      "trip": {
+        "tripId": "0062132026-11-04",
+        "scheduleRelationship": "CANCELED"
+      }
+    }
+  }, {
+    "id": "TUCANCEL_0062142026-11-04",
+    "tripUpdate": {
+      "trip": {
+        "tripId": "0062142026-11-04",
+        "scheduleRelationship": "CANCELED"
+      }
+    }
+  }, {
+    "id": "TUCANCEL_0062152026-11-04",
+    "tripUpdate": {
+      "trip": {
+        "tripId": "0062152026-11-04",
+        "scheduleRelationship": "CANCELED"
+      }
+    }
+  }, {
+    "id": "TUCANCEL_3762112026-11-04",
+    "tripUpdate": {
+      "trip": {
+        "tripId": "3762112026-11-04",
+        "scheduleRelationship": "CANCELED"
+      }
+    }
+  }, {
+    "id": "TUCANCEL_3762122026-11-04",
+    "tripUpdate": {
+      "trip": {
+        "tripId": "3762122026-11-04",
+        "scheduleRelationship": "CANCELED"
+      }
+    }
+  }, {
+    "id": "TUCANCEL_0330112026-11-04",
+    "tripUpdate": {
+      "trip": {
+        "tripId": "0330112026-11-04",
+        "scheduleRelationship": "CANCELED"
+      }
+    }
+  }, {
+    "id": "TUCANCEL_0308312026-11-04",
+    "tripUpdate": {
+      "trip": {
+        "tripId": "0308312026-11-04",
+        "scheduleRelationship": "CANCELED"
+      }
+    }
+  }, {
+    "id": "TUCANCEL_3411312026-11-04",
+    "tripUpdate": {
+      "trip": {
+        "tripId": "3411312026-11-04",
+        "scheduleRelationship": "CANCELED"
+      }
+    }
+  }, {
+    "id": "TUCANCEL_0407212026-11-04",
+    "tripUpdate": {
+      "trip": {
+        "tripId": "0407212026-11-04",
+        "scheduleRelationship": "CANCELED"
+      }
+    }
+  }, {
+    "id": "TUCANCEL_0407222026-11-04",
+    "tripUpdate": {
+      "trip": {
+        "tripId": "0407222026-11-04",
+        "scheduleRelationship": "CANCELED"
+      }
+    }
+  }, {
+    "id": "TUCANCEL_3707212026-11-04",
+    "tripUpdate": {
+      "trip": {
+        "tripId": "3707212026-11-04",
+        "scheduleRelationship": "CANCELED"
+      }
+    }
+  }, {
+    "id": "TUCANCEL_0507212026-11-04",
+    "tripUpdate": {
+      "trip": {
+        "tripId": "0507212026-11-04",
+        "scheduleRelationship": "CANCELED"
+      }
+    }
+  }, {
+    "id": "TUCANCEL_0806312026-11-04",
+    "tripUpdate": {
+      "trip": {
+        "tripId": "0806312026-11-04",
+        "scheduleRelationship": "CANCELED"
+      }
+    }
+  }, {
+    "id": "TUCANCEL_0405612026-11-04",
+    "tripUpdate": {
+      "trip": {
+        "tripId": "0405612026-11-04",
+        "scheduleRelationship": "CANCELED"
+      }
+    }
+  }, {
+    "id": "TUCANCEL_0408712026-11-04",
+    "tripUpdate": {
+      "trip": {
+        "tripId": "0408712026-11-04",
+        "scheduleRelationship": "CANCELED"
+      }
+    }
+  }, {
+    "id": "TUCANCEL_1260012026-11-04",
+    "tripUpdate": {
+      "trip": {
+        "tripId": "1260012026-11-04",
+        "scheduleRelationship": "CANCELED"
+      }
+    }
+  }, {
+    "id": "TUCANCEL_1304112026-11-03",
+    "tripUpdate": {
+      "trip": {
+        "tripId": "1304112026-11-03",
+        "scheduleRelationship": "CANCELED"
+      }
+    }
+  }, {
+    "id": "TUCANCEL_1713412026-11-03",
+    "tripUpdate": {
+      "trip": {
+        "tripId": "1713412026-11-03",
+        "scheduleRelationship": "CANCELED"
+      }
+    }
+  }, {
+    "id": "TUCANCEL_1713512026-11-03",
+    "tripUpdate": {
+      "trip": {
+        "tripId": "1713512026-11-03",
+        "scheduleRelationship": "CANCELED"
+      }
+    }
+  }, {
+    "id": "TUCANCEL_1821612026-11-03",
+    "tripUpdate": {
+      "trip": {
+        "tripId": "1821612026-11-03",
+        "scheduleRelationship": "CANCELED"
+      }
+    }
+  }, {
+    "id": "TUCANCEL_1530812026-11-03",
+    "tripUpdate": {
+      "trip": {
+        "tripId": "1530812026-11-03",
+        "scheduleRelationship": "CANCELED"
+      }
+    }
+  }, {
+    "id": "TUCANCEL_1503212026-11-03",
+    "tripUpdate": {
+      "trip": {
+        "tripId": "1503212026-11-03",
+        "scheduleRelationship": "CANCELED"
+      }
+    }
+  }, {
+    "id": "TUCANCEL_7183112026-11-04",
+    "tripUpdate": {
+      "trip": {
+        "tripId": "7183112026-11-04",
+        "scheduleRelationship": "CANCELED"
+      }
+    }
+  }]
+}
