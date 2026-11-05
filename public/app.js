@@ -550,8 +550,10 @@ async function loadStations() {
   } catch { return false; }
 }
 async function poll() {
+  // Stations and live trains are independent requests: fetch them together; paint once both have settled.
+  const live = fetch('/api/live').then((r) => r.json()).catch(() => null);
   if (!state.stations.length) await loadStations();
-  try { state.live = await (await fetch('/api/live')).json(); } catch { state.live = null; }
+  state.live = await live;
   renderStatus(); paintData();
   if (state.card?.kind === 'train') { await refreshTrain(); await refreshContext(); }
   if (state.card?.kind === 'station') await refreshStation();
